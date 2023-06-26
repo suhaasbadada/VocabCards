@@ -1,0 +1,92 @@
+.kontent{
+    padding:16px;
+}
+.spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: darkgrey;
+}
+
+.spinner{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
+
+p {
+    font-family: "Lato", sans-serif;
+    text-align: justify;
+    text-align:center;
+    margin-top: 2px;
+  }
+  
+  .example-card {
+    width: 350px;
+    margin: 10px;
+    height:185px;
+    border-radius: 10px;
+    margin-left:60px;
+    background-color: #FFFEF2;
+  }
+  
+  .check-box{
+      position:absolute;
+      right:0;
+      top:0;
+      margin:12px;
+  }
+  
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: rgb(94, 232, 94) !important;
+  }
+  ::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #66ff00!important;
+  }
+  
+  .content{
+      font-family: "Lato", sans-serif;
+      margin-left: 12px;
+      max-width: 330px;
+  }
+
+  .counter{
+    /* rgb(94, 232, 94); */
+    color:rgb(94, 232, 94);
+    /* color:black; */
+    font-size: 25px;
+    padding-top: 15px;
+    position: absolute;
+    left:0px;
+    width:70px;
+    background-color: white;
+    padding:12px;
+    border-radius: 10px;
+  }
+
+  .sticky{
+    position: fixed;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  .score{
+    top: 0;
+    right:0;
+    color: rgb(94, 232, 94);
+    font-size: 22px;
+    margin-top: 36px;
+    margin-right: 20px;
+  }
+
+  .home{
+    background-color:#152238;
+    color:#FFFEF2;
+  }
+
+  .material-icons {
+    font-size: 45px;
+  }

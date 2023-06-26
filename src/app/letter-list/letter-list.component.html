@@ -1,0 +1,53 @@
+
+<!-- <mat-sidenav-container class="background-primary">
+    <mat-sidenav [(opened)]="opened" mode="side">
+        Insert icons
+    </mat-sidenav>
+    <mat-sidenav-content>
+       <mat-icon (click)="opened=!opened" style="color:#FFFEF2">view_sidebar</mat-icon>
+         -->
+        <p style="font-size: 35px; color: white;">10/1067</p>
+        
+        <div class="content" > 
+            <ng-container *ngFor="let letter of letters">
+                <div class="card" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">
+                    <a routerLink="/flashcards/letter/{{letter}}" mat-flat-button>
+                        <p>
+                            <app-letter [letter]="letter" [percentage]="map.get(letter)"></app-letter>
+                        </p>
+                    </a>
+                </div>
+                <div class="card" *ngIf="letter=='X' || letter=='Y'">
+                    <a (click)="openDialog()" mat-flat-button>
+                        <p>
+                            <app-letter [letter]="letter" [percentage]="map.get(letter)"></app-letter>
+                        </p>
+                    </a>
+                </div>
+            </ng-container>
+        </div>
+        
+    <!-- </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<!-- <div class="content" > 
+    <ng-container *ngFor="let letter of letters">
+        <div class="card" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">
+            <a routerLink="/flashcards/letter/{{letter}}" mat-flat-button>
+                <p>
+                    <app-letter [letter]="letter" [percentage]="map.get(letter)"></app-letter>
+                </p>
+            </a>
+        </div>
+        <div class="card" *ngIf="letter=='X' || letter=='Y'">
+            <a (click)="openDialog()" mat-flat-button>
+                <p>
+                    <app-letter [letter]="letter" [percentage]="map.get(letter)"></app-letter>
+                </p>
+            </a>
+        </div>
+    </ng-container>
+</div> -->
+<!-- <footer class="footer">
+    <mat-icon>info</mat-icon>
+</footer> -->

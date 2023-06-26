@@ -1,0 +1,55 @@
+
+.card{  
+    padding: 20px;
+    height: 100px;
+    width: 100px;
+    background-color:#FFFEF2;
+    border-radius: 10px;
+    text-align: center;
+    color:pink;
+}
+p{
+    font-size: 50px;
+    text-align: center;
+    padding-top:30px;
+}
+.content{
+    margin-top: 50px;
+    padding:15px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 30px;
+    align-items: center;
+}
+a{
+    color:darkgray;
+    background-color: #FFFEF2 ;
+}
+
+.popup .mat-dialog-container {
+    background-color: red;
+ }
+
+.footer{
+    color:white;
+    position: absolute;
+    bottom: 0;
+}
+
+/* Sidenav Style  */
+mat-sidenav-container{
+    height:calc(205vh - 115vh);
+}
+
+mat-sidenav{
+    width:100px;
+}
+
+::ng-deep .mat-sidenav-container{
+    height: 100vh !important;
+}
+
+mat-sidenav[mode="side"] {
+    background-color: #152238;
+    color: #333;
+  }
