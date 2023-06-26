@@ -1,0 +1,35 @@
+<div class=" score sticky" *ngIf="model.length && loaded"><p>{{totalLearnt}}/{{model.length}}</p></div>
+
+<a class="home" mat-flat-button routerLink=""><span class="material-icons">abc</span></a>
+
+<div class="kontent">
+    <div fxLayout="row wrap" fxLayoutGap="35px">
+
+        <!-- spinner if waiting data to load -->
+        <div class="spinner">
+            <mat-spinner *ngIf="!loaded"></mat-spinner>
+        </div>
+
+        <!-- no words component if result empty -->
+        <div *ngIf="!model.length && loaded">
+            <app-no-words></app-no-words>
+        </div>
+
+        <!-- flashcard -->
+        <div fxFlex="30%" *ngFor="let element of model" fxLayout="row wrap">
+            <mat-card *ngIf="element" class="example-card mat-elevation-z5">
+                <mat-card-header class="header">
+                    <mat-card-title><a href="https://www.dictionary.com/browse/{{element.word}}" target="_blank">{{element.word}}</a> <i> ({{element.pos}})</i></mat-card-title>
+                    <mat-card-subtitle class="sub">{{element.definition}}</mat-card-subtitle>
+                    <div class="check-box"><mat-checkbox [checked]="element.learnt"  (change)="toggle(element,$event)"></mat-checkbox></div>
+                </mat-card-header>
+                <hr>
+                <mat-card-content class="content">
+                    Example : {{element.example}}
+                </mat-card-content>
+            </mat-card> 
+        </div>
+    </div>
+    
+<!-- <button (click)="openDialog()">2EZ</button> -->
+</div>

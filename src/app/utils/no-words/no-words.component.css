@@ -1,0 +1,15 @@
+p{
+    color:darkgray;
+}
+
+.nowords-card{
+   
+    height:100px;
+    width: 200px;
+    border-radius: 10px;
+    margin: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
