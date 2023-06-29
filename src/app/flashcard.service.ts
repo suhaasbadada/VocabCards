@@ -12,10 +12,10 @@ export class FlashcardService {
   constructor(private http:HttpClient) { }
   private apiURL=environment.apiURL+'/flashcards';
   private letter="/letter";
-  private query="?c=";
+  private query="/";
 
   getByLetter(c:string):Observable<flashcardDTO[]>{
-    // console.log(`${this.apiURL}${this.letter}${this.query}${c}`);
+    console.log(`${this.apiURL}${this.letter}${this.query}${c}`);
     return this.http.get<flashcardDTO[]>(`${this.apiURL}${this.letter}${this.query}${c}`);
   }
 
