@@ -6,7 +6,7 @@
     <mat-sidenav-content>
        <mat-icon (click)="opened=!opened" style="color:#FFFEF2">view_sidebar</mat-icon>
          -->
-        <p style="font-size: 35px; color: white;">10/1067</p>
+        <p style="font-size: 35px; color: white;" *ngIf="totalLearntLoaded">{{totalLearnt}}/1067</p>
         
         <div class="content" > 
             <ng-container *ngFor="let letter of letters">

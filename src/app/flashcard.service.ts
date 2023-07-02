@@ -26,4 +26,8 @@ export class FlashcardService {
   edit(id:number,flashcard:flashcardDTO){
     return this.http.put(`${this.apiURL}/${id}`,flashcard);
   }
+
+  getTotalLearnt():Observable<number>{
+    return this.http.get<number>(`${this.apiURL}/totallearnt`);
+  }
 }

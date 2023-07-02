@@ -17,6 +17,7 @@ export class LetterListComponent implements OnInit {
   percentage!:number;
   total!:number;
   totalLearnt!:number;
+  totalLearntLoaded!:boolean;
   model!:flashcardDTO[];
   opened=false;
 
@@ -28,6 +29,7 @@ export class LetterListComponent implements OnInit {
     for(var letter of this.letters){
       let l=letter;
       this.hasLoaded.set(l,false);
+      this.totalLearntLoaded=false;
       this.flashcardService.getByLetter(letter.toLowerCase()).subscribe ((response:flashcardDTO[])=>{
         this.model=response;
         this.totalLearnt=this.model.filter(x=>x.learnt==="true").length;
@@ -35,6 +37,10 @@ export class LetterListComponent implements OnInit {
         this.percentage=((this.totalLearnt/this.total)*100);
         this.map.set(l,this.percentage);
         this.hasLoaded.set(l,true);
+      })
+      this.flashcardService.getTotalLearnt().subscribe((response:number)=>{
+        this.totalLearnt=response;
+        this.totalLearntLoaded=true;
       })
     }
   }
