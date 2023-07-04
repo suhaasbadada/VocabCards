@@ -14,6 +14,7 @@ import { NoWordsComponent } from './utils/no-words/no-words.component';
 import { ProgressBarComponent } from './utils/progress-bar/progress-bar.component';
 import { LetterComponent } from './utils/letter/letter.component';
 import { HueChartComponent } from './utils/hue-chart/hue-chart.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HueChartComponent } from './utils/hue-chart/hue-chart.component';
     NoWordsComponent,
     ProgressBarComponent,
     LetterComponent,
-    HueChartComponent
+    HueChartComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

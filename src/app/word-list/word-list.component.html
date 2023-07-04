@@ -16,7 +16,7 @@
         </div>
 
         <!-- flashcard -->
-        <div fxFlex="30%" *ngFor="let element of model" fxLayout="row wrap">
+        <div  *ngFor="let element of model" fxLayout="row wrap">
             <mat-card *ngIf="element" class="example-card mat-elevation-z5">
                 <mat-card-header class="header">
                     <mat-card-title><a href="https://www.dictionary.com/browse/{{element.word}}" target="_blank">{{element.word}}</a> <i> ({{element.pos}})</i></mat-card-title>

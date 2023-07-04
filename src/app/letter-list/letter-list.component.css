@@ -1,26 +1,63 @@
-
 .card{  
-    padding: 20px;
-    height: 100px;
-    width: 100px;
+    padding: 1.25rem;
+    height: 6.25rem;
+    width: 6.25rem;
     background-color:#FFFEF2;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     text-align: center;
     color:pink;
+    margin-right: 0.188rem;
+    margin-left: 0;
+    margin-bottom: 0.625rem;
 }
 p{
-    font-size: 50px;
+    font-size: 3.125rem;
     text-align: center;
-    padding-top:30px;
+    padding-top:1.875rem;
 }
-.content{
-    margin-top: 50px;
-    padding:15px;
+.content {
+    margin-top: 3.125rem;
+    padding: 0.928rem;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 30px;
+    gap: 1.875rem;
     align-items: center;
+    font-family: "Lato", sans-serif;
+    width: 100%;
+
+    /* Updated styles for smaller screens */
+    grid-template-columns: repeat(1, 1fr);
+
+    @media (min-width: 500px) {
+        /* For screens with width >= 576px, display 2 columns */
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 768px) {
+        /* For screens with width >= 768px, display 3 columns */
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 992px) {
+        /* For screens with width >= 992px, display 4 columns */
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 1200px) {
+        /* For screens with width >= 1200px, display 5 columns */
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (min-width: 1400px) {
+        /* For screens with width >= 1400px, display 6 columns */
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media (min-width: 1600px) {
+        /* For screens with width >= 1600px, display 7 columns */
+        grid-template-columns: repeat(7, 1fr);
+    }
 }
+
 a{
     color:darkgray;
     background-color: #FFFEF2 ;
@@ -36,20 +73,21 @@ a{
     bottom: 0;
 }
 
+
 /* Sidenav Style  */
 mat-sidenav-container{
     height:calc(205vh - 115vh);
 }
 
-mat-sidenav{
+/* mat-sidenav{
     width:100px;
-}
+} */
 
-::ng-deep .mat-sidenav-container{
+/* ::ng-deep .mat-sidenav-container{
     height: 100vh !important;
-}
+} */
 
-mat-sidenav[mode="side"] {
+/* mat-sidenav[mode="side"] {
     background-color: #152238;
     color: #333;
-  }
+  } */
