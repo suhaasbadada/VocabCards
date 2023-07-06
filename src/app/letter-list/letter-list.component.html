@@ -6,8 +6,13 @@
     <mat-sidenav-content>
        <mat-icon (click)="opened=!opened" style="color:#FFFEF2">view_sidebar</mat-icon>
          -->
-        <p style="font-size: 35px; color: white;" *ngIf="totalLearntLoaded">{{totalLearnt}}/1067</p>
+         <div fxLayout="row wrap" fxLayoutGap="35px">
+            <a class="home" mat-flat-button routerLink="quickreview"><span class="material-icons">bolt</span></a>
+            <a class="home" mat-flat-button routerLink="quiz"><span class="material-icons" style="color: gray;">alarm_on</span></a>
+            <p style="font-size: 30px; color: greenyellow; position: absolute; top: 20px; right:80px; margin-right: 10px;" *ngIf="totalLearntLoaded">{{totalLearnt}}/1067</p>
+        </div>
         
+
         <div class="content"> 
             <ng-container *ngFor="let letter of letters">
                 <div class="card" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">

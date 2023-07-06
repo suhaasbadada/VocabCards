@@ -1,0 +1,19 @@
+<a class="home" mat-flat-button routerLink=""><span class="material-icons">abc</span></a>
+
+<div class="kontent">
+    <div fxLayout="row wrap" fxLayoutGap="35px">
+    <div class="spinner">
+        <mat-spinner *ngIf="!hasLoaded"></mat-spinner>
+    </div>
+    <div *ngIf="hasLoaded"  fxLayout="row wrap">
+        <div *ngFor="let w of response">
+            <p (click)="showDefinition[w.id] = !showDefinition[w.id]" class="card">
+                <a>{{w.word}}</a>
+            </p>
+            <div *ngIf="showDefinition[w.id]" class="definition">
+                <p style="background-color: #FFFEF2;width: 200px;color: gray;height: 40px; border-radius: 10px; margin: 15px;font-size: 14px;">{{w.definition}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -15,7 +15,6 @@ export class LetterComponent implements OnInit {
 
   ngOnInit(): void {
     this.rgb=this.getGreenToRed(this.percentage);
-    console.log(this.letter,this.percentage);
   }
 
   getGreenToRed(percentage:number){

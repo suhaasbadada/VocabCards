@@ -1,20 +1,33 @@
-.card{  
-    padding: 1.25rem;
-    height: 6.25rem;
-    width: 6.25rem;
-    background-color:#FFFEF2;
-    border-radius: 0.625rem;
-    text-align: center;
-    color:pink;
-    margin-right: 0.188rem;
-    margin-left: 0;
-    margin-bottom: 0.625rem;
-}
 p{
-    font-size: 3.125rem;
+    color:#152238;
+    align-items: center;
     text-align: center;
-    padding-top:1.875rem;
 }
+
+.home{
+    background-color:#152238;
+    color:#FFFEF2;
+}
+.material-icons {
+font-size: 45px;
+}
+
+.spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: darkgrey;
+}
+
+.spinner{
+    width: 6.25rem;
+    height: 6.25rem;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
+
 .content {
     margin-top: 3.125rem;
     padding: 0.928rem;
@@ -58,43 +71,34 @@ p{
     }
 }
 
-a{
-    color:darkgray;
-    background-color: #FFFEF2 ;
+.kontent{
+    align-items: center;
+    text-align: center;
 }
 
-.popup .mat-dialog-container {
-    background-color: red;
- }
-
-.footer{
-    color:white;
-    position: absolute;
-    bottom: 0;
+.card {
+    background-color: #FFFEF2;
+    width: 150px;
+    height: 65px;
+    border-radius: 10px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color:gray;
 }
 
-
-/* Sidenav Style  */
-mat-sidenav-container{
-    height:calc(205vh - 115vh);
-}
-
-/* mat-sidenav{
-    width:100px;
-} */
-
-/* ::ng-deep .mat-sidenav-container{
-    height: 100vh !important;
-} */
-
-/* mat-sidenav[mode="side"] {
-    background-color: #152238;
-    color: #333;
-  } */
-
-.home{
-    background-color:#152238;
-    color:yellow;
-    transform: scale(1.5);
-    padding-top: 17px;
+.definition {
+    background-color: #FFFEF2;
+    width: 150px;
+    color: gray;
+    height: 65px;
+    border-radius: 10px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 }

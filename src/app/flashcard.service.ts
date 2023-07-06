@@ -15,7 +15,6 @@ export class FlashcardService {
   private query="/";
 
   getByLetter(c:string):Observable<flashcardDTO[]>{
-    console.log(`${this.apiURL}${this.letter}${this.query}${c}`);
     return this.http.get<flashcardDTO[]>(`${this.apiURL}${this.letter}${this.query}${c}`);
   }
 
@@ -29,5 +28,10 @@ export class FlashcardService {
 
   getTotalLearnt():Observable<number>{
     return this.http.get<number>(`${this.apiURL}/totallearnt`);
+  }
+
+  getAllLearnt():Observable<flashcardDTO[]>{
+    console.log(this.http.get<flashcardDTO[]>(`${this.apiURL}/alllearnt`));
+    return this.http.get<flashcardDTO[]>(`${this.apiURL}/alllearnt`);
   }
 }
