@@ -107,7 +107,6 @@ p{
     align-items: center; /* Add this line to center the paginator vertically */
     margin-top: 1.25rem;
     background-color: #152238;
-    /* width: 500px; */
   }
   
   ::ng-deep .mat-paginator-outer-container {
@@ -118,7 +117,7 @@ p{
     display: flex;
     justify-content: center; /* Center the paginator content horizontally */
     align-items: center; /* Center the paginator content vertically */
-    width:30rem;
+    width:31.25rem;
   }
   
   /* Other styles */
