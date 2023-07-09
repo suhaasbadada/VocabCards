@@ -20,7 +20,7 @@ export class LetterListComponent implements OnInit {
   totalLearntLoaded!:boolean;
   model!:flashcardDTO[];
   opened=false;
-
+  loaded=false;
   map=new Map();
   hasLoaded=new Map();
   
@@ -43,6 +43,7 @@ export class LetterListComponent implements OnInit {
         this.totalLearntLoaded=true;
       })
     }
+    this.loaded=true;
   }
 
   openDialog(){

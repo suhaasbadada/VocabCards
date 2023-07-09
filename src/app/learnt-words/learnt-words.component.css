@@ -9,7 +9,7 @@ p{
     color:#FFFEF2;
 }
 .material-icons {
-font-size: 45px;
+    font-size: 45px;
 }
 
 .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
@@ -72,8 +72,7 @@ font-size: 45px;
 }
 
 .kontent{
-    align-items: center;
-    text-align: center;
+    padding:1rem;
 }
 
 .card {
@@ -93,7 +92,7 @@ font-size: 45px;
 .definition {
     background-color: #FFFEF2;
     width: 150px;
-    color: gray;
+    color:  darkgray;
     height: 65px;
     border-radius: 10px;
     margin: 15px;
@@ -101,4 +100,31 @@ font-size: 45px;
     justify-content: center;
     align-items: center;
     font-size: 14px;
+}
+.paginator {
+    display: flex;
+    justify-content: center; /* Add this line to center the paginator horizontally */
+    align-items: center; /* Add this line to center the paginator vertically */
+    margin-top: 1.25rem;
+    background-color: #152238;
+    /* width: 500px; */
+  }
+  
+  ::ng-deep .mat-paginator-outer-container {
+    justify-content: center !important; /* Center the paginator content horizontally */
+    background-color:  #FFFEF2;
+    color:#152238;
+    border-radius: 0.938rem;
+    display: flex;
+    justify-content: center; /* Center the paginator content horizontally */
+    align-items: center; /* Center the paginator content vertically */
+    width:30rem;
+  }
+  
+  /* Other styles */
+  
+
+::ng-deep .mat-paginator-range-actions{
+    /* background-color: #152238; */
+    border-radius: 1.875rem;
 }

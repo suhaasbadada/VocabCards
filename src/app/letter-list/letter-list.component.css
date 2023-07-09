@@ -98,3 +98,19 @@ mat-sidenav-container{
     transform: scale(1.5);
     padding-top: 17px;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: darkgrey!important;
+}
+
+/* .spinner{
+    width: 6.25rem;
+    height: 6.25rem;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+} */

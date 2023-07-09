@@ -12,9 +12,9 @@
             <p style="font-size: 30px; color: greenyellow; position: absolute; top: 20px; right:80px; margin-right: 10px;" *ngIf="totalLearntLoaded">{{totalLearnt}}/1067</p>
         </div>
         
-
-        <div class="content"> 
+        <div class="content" *ngIf="loaded"> 
             <ng-container *ngFor="let letter of letters">
+                <mat-spinner *ngIf="!hasLoaded.get(letter)"></mat-spinner>
                 <div class="card" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">
                     <a routerLink="/flashcards/letter/{{letter}}" mat-flat-button>
                         <p>
