@@ -1,0 +1,18 @@
+<a class="home" mat-flat-button routerLink=""><span class="material-icons">abc</span></a>
+<div class="container">
+    <div *ngIf="loaded && response" class="random-word-card">
+      <mat-card *ngIf="response" class="example-card mat-elevation-z5">
+        <mat-card-header class="header">
+          <mat-card-title><a href="https://www.dictionary.com/browse/{{response.word}}" target="_blank">{{response.word}}</a><i> ({{response.pos}})</i></mat-card-title>
+          <mat-card-subtitle class="sub">{{response.definition}}</mat-card-subtitle>
+          <div class="check-box"><mat-checkbox [checked]="response.learnt" (change)="toggle(response,$event)"></mat-checkbox></div>
+        </mat-card-header>
+        <hr>
+        <mat-card-content class="content">
+          Example: {{response.example}}
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <a class="refresh" mat-flat-button (click)="reloadPage()" ><span class="material-icons">refresh</span></a>
+  </div>
+  

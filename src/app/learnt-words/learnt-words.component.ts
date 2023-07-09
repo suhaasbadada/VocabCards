@@ -27,8 +27,8 @@ export class LearntWordsComponent implements OnInit {
         this.colorMap[obj.id]='green';
         this.showDefinition[obj.id]=false;
       })
+      this.hasLoaded = true;
     })
-    this.hasLoaded = true;
   }
 
   ngAfterViewInit(): void{

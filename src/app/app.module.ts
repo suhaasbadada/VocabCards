@@ -16,6 +16,7 @@ import { LetterComponent } from './utils/letter/letter.component';
 import { HueChartComponent } from './utils/hue-chart/hue-chart.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LearntWordsComponent } from './learnt-words/learnt-words.component';
+import { RandomwordComponent } from './randomword/randomword.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LearntWordsComponent } from './learnt-words/learnt-words.component';
     LetterComponent,
     HueChartComponent,
     LoginPageComponent,
-    LearntWordsComponent
+    LearntWordsComponent,
+    RandomwordComponent
   ],
   imports: [
     BrowserModule,

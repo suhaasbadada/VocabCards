@@ -5,6 +5,7 @@ import { HueChartComponent } from './utils/hue-chart/hue-chart.component';
 import { WordListComponent } from './word-list/word-list.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LearntWordsComponent } from './learnt-words/learnt-words.component';
+import { RandomwordComponent } from './randomword/randomword.component';
 
 const routes: Routes = [
   {path:'',component:LetterListComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'huechart',component:HueChartComponent},
   {path:'login',component:LoginPageComponent},
   {path:'quickreview',component:LearntWordsComponent},
+  {path:'random',component:RandomwordComponent},
   {path:'**',redirectTo:''},
 ];
 
