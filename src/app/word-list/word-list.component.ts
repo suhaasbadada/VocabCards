@@ -4,6 +4,10 @@ import { FlashcardService } from '../flashcard.service';
 import { flashcardDTO } from '../models/flashcard.model';
 import { MatDialog } from '@angular/material/dialog';
 import { NoWordsComponent } from '../utils/no-words/no-words.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+const localStorageKey='learntWords';
 
 @Component({
   selector: 'app-word-list',
@@ -15,8 +19,8 @@ export class WordListComponent implements OnInit {
   noWords=true;
   loaded=false;
   totalLearnt!:number;
-  constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog) { }
-
+  constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog,private http:HttpClient) { }
+  private apiURL=environment.apiURL;
   ngOnInit(): void {
     this.loadData();
   }
@@ -26,10 +30,9 @@ export class WordListComponent implements OnInit {
       this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
         this.model=flashcards;
         this.loaded=true;
-        this.totalLearnt=this.model.filter(x=>x.learnt==="true").length;
+        this.totalLearnt=this.model.filter(x=>x.learnt==="true").length; // has to be changed
       })
     })
-    
   }
   toggle(element:flashcardDTO,$event: { checked: boolean; }){
     element.learnt=String($event.checked);
@@ -39,6 +42,40 @@ export class WordListComponent implements OnInit {
       this.totalLearnt++;
     }
     this.flashcardService.edit(element.id,element).subscribe(()=>{});
+  }
+
+  onCheckboxChange(wordId: number, isChecked: boolean) {
+    const learntWords = JSON.parse(localStorage.getItem(localStorageKey) || '{}');
+    learntWords[wordId] = isChecked;
+    localStorage.setItem(localStorageKey, JSON.stringify(learntWords));
+
+    this.sendLocalStorageDataToBackend(learntWords);
+  }
+
+  sendLocalStorageDataToBackend(data: any) {
+    console.log(data);  
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'LocalStorageData': JSON.stringify(data)
+      })
+    };
+  
+    this.http.get<any>(this.apiURL+'/words/local-storage', httpOptions).subscribe(
+      (response) => {
+        console.log("Response:",response);
+        console.log('Local storage data sent to backend successfully.');
+      },
+      (error) => {
+        console.error('Error sending local storage data to backend:', error);
+      }
+    );
+  }
+
+
+  getCheckboxStatus(wordId: number): boolean{
+    const learntWords=JSON.parse(localStorage.getItem(localStorageKey) || '{}');
+    return learntWords[wordId] || false;
   }
 
   openDialog(){

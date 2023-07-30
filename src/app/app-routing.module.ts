@@ -6,6 +6,8 @@ import { WordListComponent } from './word-list/word-list.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LearntWordsComponent } from './learnt-words/learnt-words.component';
 import { RandomwordComponent } from './randomword/randomword.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { SupportComponent } from './support/support.component';
 
 const routes: Routes = [
   {path:'',component:LetterListComponent},
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path:'login',component:LoginPageComponent},
   {path:'quickreview',component:LearntWordsComponent},
   {path:'random',component:RandomwordComponent},
+  {path:'quiz',component:QuizComponent},
+  {path:'support',component:SupportComponent},
   {path:'**',redirectTo:''},
 ];
 

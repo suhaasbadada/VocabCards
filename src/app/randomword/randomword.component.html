@@ -6,6 +6,7 @@
           <mat-card-title><a href="https://www.dictionary.com/browse/{{response.word}}" target="_blank">{{response.word}}</a><i> ({{response.pos}})</i></mat-card-title>
           <mat-card-subtitle class="sub">{{response.definition}}</mat-card-subtitle>
           <div class="check-box"><mat-checkbox [checked]="response.learnt" (change)="toggle(response,$event)"></mat-checkbox></div>
+          <a class="report-problem" mat-flat-button (click)="reportedId()"><span class="material-icons" style="color:red;font-size:23px;">report_problem</span></a>
         </mat-card-header>
         <hr>
         <mat-card-content class="content">
@@ -14,5 +15,6 @@
       </mat-card>
     </div>
     <a class="refresh" mat-flat-button (click)="reloadPage()" ><span class="material-icons">refresh</span></a>
+    <br>
   </div>
   

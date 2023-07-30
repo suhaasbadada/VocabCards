@@ -18,6 +18,14 @@
   margin: 0.75rem;
 }
 
+.report-problem{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #FFFEF2;
+  margin-left: 0.75rem;
+}
+
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: rgb(94, 232, 94) !important;
 }

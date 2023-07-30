@@ -17,6 +17,8 @@ import { HueChartComponent } from './utils/hue-chart/hue-chart.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LearntWordsComponent } from './learnt-words/learnt-words.component';
 import { RandomwordComponent } from './randomword/randomword.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { RandomwordComponent } from './randomword/randomword.component';
     HueChartComponent,
     LoginPageComponent,
     LearntWordsComponent,
-    RandomwordComponent
+    RandomwordComponent,
+    QuizComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,

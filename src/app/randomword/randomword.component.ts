@@ -17,7 +17,6 @@ export class RandomwordComponent implements OnInit {
   ngOnInit(): void {
     this.flashcardService.getRandom().subscribe(response=>{
       this.response=response;
-      console.log(response);
       this.loaded=true;
     })
   }
@@ -29,5 +28,8 @@ export class RandomwordComponent implements OnInit {
 
   reloadPage(): void {
     this.ngOnInit();
+  }
+  reportedId(){
+    console.log(this.response.id);
   }
 }
