@@ -10,6 +10,7 @@ import { flashcardDTO } from '../models/flashcard.model';
   styleUrls: ['./learnt-words.component.css']
 })
 export class LearntWordsComponent implements OnInit {
+  // response to update from local browser memory
   hasLoaded=false;
   response!:Array<flashcardDTO>;
   paginatedResponse: any[] = [];
@@ -20,7 +21,7 @@ export class LearntWordsComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog) { }
 
   ngOnInit(): void {
-    this.flashcardService.getAllLearnt().subscribe((response:flashcardDTO[])=>{
+    this.flashcardService.getAllLearnt().subscribe((response:flashcardDTO[])=>{ // get from local browser memory
       this.response=response;
       this.paginateItems();
       response.forEach(obj=>{

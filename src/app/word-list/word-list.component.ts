@@ -15,6 +15,7 @@ const localStorageKey='learntWords';
   styleUrls: ['./word-list.component.css']
 })
 export class WordListComponent implements OnInit {
+  // model, totalLearnt to update from local browser memory
   model:flashcardDTO[]=[];
   noWords=true;
   loaded=false;
@@ -30,11 +31,11 @@ export class WordListComponent implements OnInit {
       this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
         this.model=flashcards;
         this.loaded=true;
-        this.totalLearnt=this.model.filter(x=>x.learnt==="true").length; // has to be changed
+        this.totalLearnt=this.model.filter(x=>x.learnt==="true").length; // get from local browser memory ( for each letter )
       })
     })
   }
-  toggle(element:flashcardDTO,$event: { checked: boolean; }){
+  toggle(element:flashcardDTO,$event: { checked: boolean; }){ // implement totalLearnt counter in the following functions ( for each letter )
     element.learnt=String($event.checked);
     if(element.learnt=="false"){
       this.totalLearnt--;

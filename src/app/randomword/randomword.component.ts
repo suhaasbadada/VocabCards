@@ -25,6 +25,7 @@ export class RandomwordComponent implements OnInit {
     element.learnt=String($event.checked);
     this.flashcardService.edit(element.id,element).subscribe(()=>{});
   }
+  // implement toggle to implement local browser memory
 
   reloadPage(): void {
     this.ngOnInit();

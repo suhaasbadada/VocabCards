@@ -10,7 +10,7 @@ import { NoWordsComponent } from '../utils/no-words/no-words.component';
   styleUrls: ['./letter-list.component.css']
 })
 export class LetterListComponent implements OnInit {
-
+  // model, totalLearnt to update from local browser memory
   constructor(private flashcardService:FlashcardService,private dialogRef:MatDialog) { }
   letters=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
   materialIcons = ['face', 'favorite', 'home', 'local_cafe', 'trending_up'];
@@ -30,7 +30,7 @@ export class LetterListComponent implements OnInit {
       let l=letter;
       this.hasLoaded.set(l,false);
       this.totalLearntLoaded=false;
-      this.flashcardService.getByLetter(letter.toLowerCase()).subscribe ((response:flashcardDTO[])=>{
+      this.flashcardService.getByLetter(letter.toLowerCase()).subscribe ((response:flashcardDTO[])=>{ // get from local browser memory
         this.model=response;
         this.totalLearnt=this.model.filter(x=>x.learnt==="true").length;
         this.total=response.length;
@@ -38,7 +38,7 @@ export class LetterListComponent implements OnInit {
         this.map.set(l,this.percentage);
         this.hasLoaded.set(l,true);
       })
-      this.flashcardService.getTotalLearnt().subscribe((response:number)=>{
+      this.flashcardService.getTotalLearnt().subscribe((response:number)=>{ // get from local browser memory
         this.totalLearnt=response;
         this.totalLearntLoaded=true;
       })
