@@ -10,7 +10,6 @@ import { flashcardDTO } from '../models/flashcard.model';
   styleUrls: ['./learnt-words.component.css']
 })
 export class LearntWordsComponent implements OnInit {
-  // response to update from local browser memory
   hasLoaded=false;
   response!:Array<flashcardDTO>;
   paginatedResponse: any[] = [];

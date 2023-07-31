@@ -13,39 +13,41 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./word-list.component.css']
 })
 export class WordListComponent implements OnInit {
-  // model, totalLearnt to update from local browser memory
   model:flashcardDTO[]=[];
   noWords=true;
   loaded=false;
   totalLearnt!:number;
+  totalLearntLBM!:number;
   constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog,private http:HttpClient) { }
   private apiURL=environment.apiURL;
   ngOnInit(): void {
+    const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
+    console.log(learntWords);
     this.loadData();
   }
 
   loadData(){
+    const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
+    const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
+
     this.activatedRoute.params.subscribe(params=>{
       this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
         this.model=flashcards;
         this.loaded=true;
-        this.totalLearnt=this.model.filter(x=>x.learnt==="true").length; // get from local browser memory ( for each letter )
+        this.totalLearnt= keysWithTrueValue.filter(id => flashcards.some(obj => obj.id === id)).length;
       })
     })
-  }
-  toggle(element:flashcardDTO,$event: { checked: boolean; }){ // implement totalLearnt counter in the following functions ( for each letter )
-    element.learnt=String($event.checked);
-    if(element.learnt=="false"){
-      this.totalLearnt--;
-    }else{
-      this.totalLearnt++;
-    }
-    this.flashcardService.edit(element.id,element).subscribe(()=>{});
+
   }
 
   onCheckboxChange(wordId: number, isChecked: boolean) {
     const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     learntWords[wordId] = isChecked;
+    if(learntWords[wordId]==false){
+      this.totalLearnt--;
+    }else{
+      this.totalLearnt++;
+    }
     localStorage.setItem(environment.localStorageKey, JSON.stringify(learntWords));
 
     this.sendLocalStorageDataToBackend(learntWords);
@@ -69,7 +71,6 @@ export class WordListComponent implements OnInit {
       }
     );
   }
-
 
   getCheckboxStatus(wordId: number): boolean{
     const learntWords=JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');

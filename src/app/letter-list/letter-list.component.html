@@ -1,56 +1,15 @@
 
-<!-- <mat-sidenav-container class="background-primary">
-    <mat-sidenav [(opened)]="opened" mode="side">
-        Insert icons
-    </mat-sidenav>
-    <mat-sidenav-content>
-       <mat-icon (click)="opened=!opened" style="color:#FFFEF2">view_sidebar</mat-icon>
-         -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9068354391591857"
-         crossorigin="anonymous"></script>
-    <!-- horizontal-AU -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-9068354391591857"
-         data-ad-slot="2439223512"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-         <div fxLayout="row wrap" fxLayoutGap="35px">
-            <a class="home" mat-flat-button routerLink="quickreview"><span class="material-icons">bolt</span></a>
-            <a class="home" mat-flat-button routerLink="random"><span class="material-icons">shuffle</span></a>
-            <a class="home" mat-flat-button routerLink="quiz"><span class="material-icons" style="color: gray;">alarm_on</span></a>
-            <!-- <a class="home" mat-flat-button routerLink="support"><span class="material-icons" style="color: white;">qr_code_scanner</span></a> -->
-            <p style="font-size: 30px; color: greenyellow; position: absolute; top: 20px; right:80px; margin-right: 10px;">{{totalLearntLBM}}/1067</p>
-        </div>
-        
-        <div class="content" *ngIf="loaded"> 
-            <ng-container *ngFor="let letter of letters">
-                <mat-spinner *ngIf="!hasLoaded.get(letter)"></mat-spinner>
-                <div class="card" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">
-                    <a routerLink="/flashcards/letter/{{letter}}" mat-flat-button>
-                        <p>
-                            <app-letter [letter]="letter" [percentage]="map.get(letter)"></app-letter>
-                        </p>
-                    </a>
-                </div>
-                <div class="card" *ngIf="letter=='X' || letter=='Y'">
-                    <a (click)="openDialog()" mat-flat-button>
-                        <p>
-                            <app-letter [letter]="letter" [percentage]="map.get(letter)"></app-letter>
-                        </p>
-                    </a>
-                </div>
-            </ng-container>
-        </div>
-        
-    <!-- </mat-sidenav-content>
-</mat-sidenav-container> -->
+<div fxLayout="row wrap" fxLayoutGap="35px">
+    <a class="home" mat-flat-button routerLink="quickreview"><span class="material-icons">bolt</span></a>
+    <a class="home" mat-flat-button routerLink="random"><span class="material-icons">shuffle</span></a>
+    <a class="home" mat-flat-button routerLink="quiz"><span class="material-icons" style="color: gray;">alarm_on</span></a>
+    <!-- <a class="home" mat-flat-button routerLink="support"><span class="material-icons" style="color: white;">qr_code_scanner</span></a> -->
+    <p style="font-size: 30px; color: greenyellow; position: absolute; top: 20px; right:80px; margin-right: 10px;">{{totalLearntLBM}}/1067</p>
+</div>
 
-<!-- <div class="content" > 
+<div class="content" *ngIf="loaded"> 
     <ng-container *ngFor="let letter of letters">
+        <mat-spinner *ngIf="!hasLoaded.get(letter)"></mat-spinner>
         <div class="card" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">
             <a routerLink="/flashcards/letter/{{letter}}" mat-flat-button>
                 <p>
@@ -66,7 +25,4 @@
             </a>
         </div>
     </ng-container>
-</div> -->
-<!-- <footer class="footer">
-    <mat-icon>info</mat-icon>
-</footer> -->
+</div>
