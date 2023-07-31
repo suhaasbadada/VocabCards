@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FlashcardService } from '../flashcard.service';
 import { MatDialog } from '@angular/material/dialog';
 import { flashcardDTO } from '../models/flashcard.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-learnt-words',
@@ -12,6 +13,7 @@ import { flashcardDTO } from '../models/flashcard.model';
 export class LearntWordsComponent implements OnInit {
   hasLoaded=false;
   response!:Array<flashcardDTO>;
+  responseLBM:Array<flashcardDTO>=[];
   paginatedResponse: any[] = [];
   itemsPerPage = 54;  
   currentPage=1;
@@ -20,15 +22,22 @@ export class LearntWordsComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog) { }
 
   ngOnInit(): void {
-    this.flashcardService.getAllLearnt().subscribe((response:flashcardDTO[])=>{ // get from local browser memory
-      this.response=response;
-      this.paginateItems();
-      response.forEach(obj=>{
-        this.colorMap[obj.id]='green';
-        this.showDefinition[obj.id]=false;
+    const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
+    const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
+
+    keysWithTrueValue.forEach((id: number)=>{
+      this.flashcardService.getById(id).subscribe((response:flashcardDTO)=>{
+        this.responseLBM.push(response);
       })
-      this.hasLoaded = true;
     })
+    setTimeout(() => {
+      this.hasLoaded = true;
+      this.paginateItems();
+      this.responseLBM.forEach(obj=>{
+          this.colorMap[obj.id]='green';
+          this.showDefinition[obj.id]=false;
+      })
+    }, 1000);
   }
 
   ngAfterViewInit(): void{
@@ -40,10 +49,11 @@ export class LearntWordsComponent implements OnInit {
     this.itemsPerPage = event.pageSize;
     this.paginateItems();
   }
+
   private paginateItems(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedResponse = this.response.slice(startIndex, endIndex);
+    this.paginatedResponse = this.responseLBM.slice(startIndex, endIndex);
   }
 
   toggleDefinition(wordObj: any): void {

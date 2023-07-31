@@ -3,7 +3,7 @@
 <div class="kontent">
   <div fxLayout="row wrap" fxLayoutGap="35px">
     <div class="spinner">
-      <mat-spinner *ngIf="!response"></mat-spinner>
+      <mat-spinner *ngIf="!responseLBM"></mat-spinner>
     </div>
     
     <div *ngIf="hasLoaded" fxLayout="row wrap">
@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="paginator" *ngIf="hasLoaded && response">
-    <mat-paginator class="paginator"  [length]="response.length" [pageSize]="itemsPerPage"   [pageSizeOptions]="[40,45,54,63,72,90]" (page)="onPageChange($event)" showFirstLastButtons></mat-paginator>
+  <div class="paginator" *ngIf="hasLoaded && responseLBM">
+    <mat-paginator class="paginator"  [length]="responseLBM.length" [pageSize]="itemsPerPage"   [pageSizeOptions]="[40,45,54,63,72,90]" (page)="onPageChange($event)" showFirstLastButtons></mat-paginator>
   </div>
 </div>
