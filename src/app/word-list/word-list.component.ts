@@ -7,8 +7,6 @@ import { NoWordsComponent } from '../utils/no-words/no-words.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-const localStorageKey='learntWords';
-
 @Component({
   selector: 'app-word-list',
   templateUrl: './word-list.component.html',
@@ -46,15 +44,14 @@ export class WordListComponent implements OnInit {
   }
 
   onCheckboxChange(wordId: number, isChecked: boolean) {
-    const learntWords = JSON.parse(localStorage.getItem(localStorageKey) || '{}');
+    const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     learntWords[wordId] = isChecked;
-    localStorage.setItem(localStorageKey, JSON.stringify(learntWords));
+    localStorage.setItem(environment.localStorageKey, JSON.stringify(learntWords));
 
     this.sendLocalStorageDataToBackend(learntWords);
   }
 
   sendLocalStorageDataToBackend(data: any) {
-    console.log(data);  
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -64,8 +61,8 @@ export class WordListComponent implements OnInit {
   
     this.http.get<any>(this.apiURL+'/words/local-storage', httpOptions).subscribe(
       (response) => {
-        console.log("Response:",response);
-        console.log('Local storage data sent to backend successfully.');
+        // console.log("Response:",response);
+        // console.log('Local storage data sent to backend successfully.');
       },
       (error) => {
         console.error('Error sending local storage data to backend:', error);
@@ -75,7 +72,7 @@ export class WordListComponent implements OnInit {
 
 
   getCheckboxStatus(wordId: number): boolean{
-    const learntWords=JSON.parse(localStorage.getItem(localStorageKey) || '{}');
+    const learntWords=JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     return learntWords[wordId] || false;
   }
 
