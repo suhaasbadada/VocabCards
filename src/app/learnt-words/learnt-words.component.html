@@ -3,7 +3,7 @@
 <div class="kontent">
   <div fxLayout="row wrap" fxLayoutGap="35px">
     <div class="spinner">
-      <mat-spinner *ngIf="!responseLBM"></mat-spinner>
+      <mat-spinner *ngIf="!hasLoaded"></mat-spinner>
     </div>
     
     <div *ngIf="hasLoaded" fxLayout="row wrap">

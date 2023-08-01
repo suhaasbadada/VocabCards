@@ -4,7 +4,7 @@ import { FlashcardService } from '../flashcard.service';
 import { MatDialog } from '@angular/material/dialog';
 import { flashcardDTO } from '../models/flashcard.model';
 import { environment } from 'src/environments/environment';
-
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-learnt-words',
   templateUrl: './learnt-words.component.html',
@@ -25,19 +25,19 @@ export class LearntWordsComponent implements OnInit {
     const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
 
-    keysWithTrueValue.forEach((id: number)=>{
-      this.flashcardService.getById(id).subscribe((response:flashcardDTO)=>{
-        this.responseLBM.push(response);
-      })
-    })
-    setTimeout(() => {
-      this.hasLoaded = true;
+    const observableArray = keysWithTrueValue.map(id => this.flashcardService.getById(id));
+
+    forkJoin(observableArray).subscribe((responses: flashcardDTO[]) => {
+      this.responseLBM = responses;
       this.paginateItems();
-      this.responseLBM.forEach(obj=>{
-          this.colorMap[obj.id]='green';
-          this.showDefinition[obj.id]=false;
-      })
-    }, 1000);
+
+      this.responseLBM.forEach(obj => {
+        this.colorMap[obj.id] = 'green';
+        this.showDefinition[obj.id] = false;
+      });
+      
+      this.hasLoaded = true;
+    });
   }
 
   ngAfterViewInit(): void{
