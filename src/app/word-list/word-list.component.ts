@@ -22,7 +22,6 @@ export class WordListComponent implements OnInit {
   private apiURL=environment.apiURL;
   ngOnInit(): void {
     const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
-    console.log(learntWords);
     this.loadData();
   }
 
