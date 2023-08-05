@@ -21,6 +21,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 @NgModule({
   declarations: [],
   exports:[
@@ -44,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatDialogModule,
     MatSidenavModule,
-    FormsModule
+    FormsModule,
+    MatSlideToggleModule
   ],
   imports: [
     CommonModule,

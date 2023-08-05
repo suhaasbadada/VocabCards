@@ -20,6 +20,9 @@ export class WordListComponent implements OnInit {
   totalLearntLBM!:number;
   constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog,private http:HttpClient) { }
   private apiURL=environment.apiURL;
+  showDefinition=false;
+  showDetails=false;
+
   ngOnInit(): void {
     const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     this.loadData();
@@ -78,6 +81,11 @@ export class WordListComponent implements OnInit {
 
   openDialog(){
     this.dialogRef.open(NoWordsComponent);
+  }
+
+  toggleShowDefinition(){
+    this.showDefinition = !this.showDefinition;
+    this.showDetails=!this.showDetails;
   }
 
 }
