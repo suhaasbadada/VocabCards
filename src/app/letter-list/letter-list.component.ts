@@ -4,16 +4,39 @@ import { FlashcardService } from '../flashcard.service';
 import { flashcardDTO } from '../models/flashcard.model';
 import { NoWordsComponent } from '../utils/no-words/no-words.component';
 import { HttpClient } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
+import { Observable, map, startWith, switchMap } from 'rxjs';
 const localStorageKey='learntWords';
 
 @Component({
   selector: 'app-letter-list',
   templateUrl: './letter-list.component.html',
-  styleUrls: ['./letter-list.component.css']
+  styleUrls: ['./letter-list.component.css'],
 })
 
 export class LetterListComponent implements OnInit {
-  constructor(private flashcardService:FlashcardService,private dialogRef:MatDialog,private http:HttpClient) { }
+  searchControl = new FormControl();
+  filteredWords!: Observable<string[]>;
+  
+  constructor(private flashcardService: FlashcardService,private dialogRef:MatDialog,private http:HttpClient) {
+    this.filteredWords = this.searchControl.valueChanges.pipe(
+      startWith(''),
+      switchMap(value => this._filter(value))
+    );
+  }
+
+  private _filter(value: string): Observable<string[]> {
+    const filterValue = value.toLowerCase();
+    return this.flashcardService.getAll().pipe(
+      map(wordDtos => wordDtos.filter(dto => dto.word.toLowerCase().includes(filterValue)).map(dto => dto.word))
+    );
+  }
+
+  displayFn(word: string): string {
+    return word;
+  }
+
+
   letters=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
   materialIcons = ['face', 'favorite', 'home', 'local_cafe', 'trending_up'];
   percentage!:number;
@@ -28,6 +51,9 @@ export class LetterListComponent implements OnInit {
   totalLearntLBM!:number;
   modelLBM!:flashcardDTO[];
   allWordsLearnt: flashcardDTO[] = [];
+  showSearch: boolean = false;
+  
+
 
   ngOnInit(): void {
     const learntWordsIds = JSON.parse(localStorage.getItem(localStorageKey) || '{}');
@@ -52,6 +78,10 @@ export class LetterListComponent implements OnInit {
 
   openDialog(){
     this.dialogRef.open(NoWordsComponent,{closeOnNavigation: true,panelClass:'popup'});
+  }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
   }
 
 }

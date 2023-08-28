@@ -19,7 +19,7 @@ import { LearntWordsComponent } from './learnt-words/learnt-words.component';
 import { RandomwordComponent } from './randomword/randomword.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { SupportComponent } from './support/support.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +42,8 @@ import { SupportComponent } from './support/support.component';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

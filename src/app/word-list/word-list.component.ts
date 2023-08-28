@@ -22,6 +22,7 @@ export class WordListComponent implements OnInit {
   private apiURL=environment.apiURL;
   showDefinition=false;
   showDetails=false;
+  learntFilter=false;
 
   ngOnInit(): void {
     const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
@@ -39,7 +40,20 @@ export class WordListComponent implements OnInit {
         this.totalLearnt= keysWithTrueValue.filter(id => flashcards.some(obj => obj.id === id)).length;
       })
     })
+  }
 
+  loadLearnt(){
+    const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
+    const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
+
+    this.activatedRoute.params.subscribe(params=>{
+      this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
+        const filteredItems: flashcardDTO[] = flashcards.filter(f => keysWithTrueValue.includes(f.id));
+        this.model=filteredItems;
+        this.loaded=true;
+        this.totalLearnt= keysWithTrueValue.filter(id => flashcards.some(obj => obj.id === id)).length;
+      })
+    })
   }
 
   onCheckboxChange(wordId: number, isChecked: boolean) {
@@ -87,5 +101,13 @@ export class WordListComponent implements OnInit {
     this.showDefinition = !this.showDefinition;
     this.showDetails=!this.showDetails;
   }
-
+  
+  showLearnt(){
+    this.learntFilter = !this.learntFilter;
+    if(this.learntFilter==true){
+      this.loadLearnt();
+    }else{
+      this.loadData();
+    }
+  }
 }

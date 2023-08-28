@@ -2,7 +2,20 @@
 <div fxLayout="row wrap" fxLayoutGap="35px">
     <a class="home" mat-flat-button routerLink="quickreview"><span class="material-icons">bolt</span></a>
     <a class="home" mat-flat-button routerLink="random"><span class="material-icons">shuffle</span></a>
-    <a class="home" mat-flat-button routerLink=""><span class="material-icons" style="color: gray;">alarm_on</span></a>
+    <!-- <a class="home" mat-flat-button routerLink=""><span class="material-icons" style="color: gray;">alarm_on</span></a> -->
+    <!-- <a class="home" mat-flat-button (click)="toggleSearch()"><span class="material-icons" style="color: whitesmoke">search</span></a> -->
+    <!-- <div *ngIf="showSearch" class="search-box">
+        <input type="text" placeholder="Search..." />
+      </div> -->
+
+      <!-- <mat-form-field>
+        <input type="text" matInput [formControl]="searchControl" placeholder="Search">
+        <mat-autocomplete [displayWith]="displayFn">
+          <mat-option *ngFor="let word of filteredWords | async" [value]="word">
+            {{ displayFn(word) }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field> -->
     <!-- <a class="home" mat-flat-button routerLink="support"><span class="material-icons" style="color: white;">qr_code_scanner</span></a> -->
     <p style="font-size: 30px; color: greenyellow; position: absolute; top: 20px; right:80px; margin-right: 10px;">{{totalLearntLBM}}/1067</p>
 </div>

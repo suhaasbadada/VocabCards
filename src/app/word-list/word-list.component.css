@@ -101,10 +101,30 @@ p {
   font-size: 32px;
 }
 
-.mat-slide-toggle{
-  top: 5;
-  right:50%;
+
+.toggle-container {
+  top:0;
+  /* top: 0;
+  right:0; */
+  right: calc((50vw + 16.25rem) / 2);  
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Horizontally center the slide toggles */
+  text-align: center;
 }
+
+.mat-slide-toggle {
+  height: 2.1875rem; /* 35px converted to rem */
+  width: 8.125rem; /* 130px converted to rem */
+  display:flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 1.25rem; /* 20px converted to rem */
+  border-radius: 0.3125rem; /* 5px converted to rem */
+  color: #FFFEF2;
+}
+
 
 :host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
   background-color: #66ff00 ;
@@ -123,4 +143,13 @@ p {
 }
 .mat-slide-toggle {
   transform: scale(1.2);
+}
+
+
+.btn{
+  width: 100px;
+  height: 40px;
+  color: green;
+  background-color:#FFFEF2;
+  border-radius: 8px;
 }

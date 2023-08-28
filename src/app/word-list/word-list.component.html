@@ -1,7 +1,12 @@
 <div class=" score sticky" *ngIf="model.length && loaded"><p>{{totalLearnt}}/{{model.length}}</p></div>
 
 <a class="home" mat-flat-button routerLink=""><span class="material-icons">abc</span></a>
-<mat-slide-toggle [checked]="showDefinition" (change)="toggleShowDefinition()" class="mat-slide-toggle sticky" ></mat-slide-toggle>
+
+<div class="toggle-container">
+    <mat-slide-toggle [checked]="showDefinition" (change)="toggleShowDefinition()" class="mat-slide-toggle ">Definition</mat-slide-toggle>
+    <mat-slide-toggle [checked]="learntFilter" (change)="showLearnt()" class="mat-slide-toggle ">Learnt</mat-slide-toggle>
+</div>
+  
 <div class="kontent">
     <div fxLayout="row wrap" fxLayoutGap="35px">
 

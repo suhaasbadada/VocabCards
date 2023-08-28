@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 @NgModule({
   declarations: [],
   exports:[
@@ -46,7 +47,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDialogModule,
     MatSidenavModule,
     FormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
   ],
   imports: [
     CommonModule,

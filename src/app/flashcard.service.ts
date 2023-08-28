@@ -31,11 +31,15 @@ export class FlashcardService {
   }
 
   getAllLearnt():Observable<flashcardDTO[]>{
-    console.log(this.http.get<flashcardDTO[]>(`${this.apiURL}/alllearnt`));
     return this.http.get<flashcardDTO[]>(`${this.apiURL}/alllearnt`);
   }
 
   getRandom():Observable<flashcardDTO>{
     return this.http.get<flashcardDTO>(`${this.apiURL}/random`);
   }
+
+  getAll():Observable<flashcardDTO[]>{
+    return this.http.get<flashcardDTO[]>(`${this.apiURL}/browse`);
+  }
+
 }

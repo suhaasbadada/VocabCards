@@ -6,9 +6,9 @@
     border-radius: 0.625rem;
     text-align: center;
     color:pink;
-    margin-right: 0.188rem;
+    /* margin-right: 0.188rem;
     margin-left: 0;
-    margin-bottom: 0.625rem;
+    margin-bottom: 0.625rem; */
 }
 p{
     font-size: 3.125rem;
@@ -27,32 +27,32 @@ p{
     /* Updated styles for smaller screens */
     grid-template-columns: repeat(1, 1fr);
 
-    @media (min-width: 500px) {
+    @media (min-width: 31.25rem) {
         /* For screens with width >= 576px, display 2 columns */
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 48rem) {
         /* For screens with width >= 768px, display 3 columns */
         grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 62rem) {
         /* For screens with width >= 992px, display 4 columns */
         grid-template-columns: repeat(4, 1fr);
     }
 
-    @media (min-width: 1200px) {
+    @media (min-width: 75rem) {
         /* For screens with width >= 1200px, display 5 columns */
         grid-template-columns: repeat(5, 1fr);
     }
 
-    @media (min-width: 1400px) {
+    @media (min-width: 87.5rem) {
         /* For screens with width >= 1400px, display 6 columns */
         grid-template-columns: repeat(6, 1fr);
     }
 
-    @media (min-width: 1600px) {
+    @media (min-width: 100rem) {
         /* For screens with width >= 1600px, display 7 columns */
         grid-template-columns: repeat(7, 1fr);
     }
@@ -75,9 +75,9 @@ a{
 
 
 /* Sidenav Style  */
-mat-sidenav-container{
+/* mat-sidenav-container{
     height:calc(205vh - 115vh);
-}
+} */
 
 /* mat-sidenav{
     width:100px;
@@ -96,7 +96,7 @@ mat-sidenav-container{
     background-color:#152238;
     color:yellow;
     transform: scale(1.5);
-    padding-top: 17px;
+    padding-top:1.063rem;
 }
 
 .mat-progress-spinner circle, .mat-spinner circle {
@@ -114,3 +114,18 @@ mat-sidenav-container{
     
     margin: auto;
 } */
+
+.search-box {
+    margin-top: 0.875rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-box input {
+    padding: 0.313rem;
+    border: 0.063rem solid #ccc;
+    border-radius: 0.938rem;
+    width: 18.75rem;
+    height: 1.875rem;
+    font-family: 'Lato', sans-serif;
+  }
