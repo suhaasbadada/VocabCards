@@ -8,8 +8,10 @@ import { LearntWordsComponent } from './learnt-words/learnt-words.component';
 import { RandomwordComponent } from './randomword/randomword.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { SupportComponent } from './support/support.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
+  // {path:'',component:HomepageComponent},
   {path:'',component:LetterListComponent},
   {path:'flashcards/letter/:c',component:WordListComponent},
   {path:'huechart',component:HueChartComponent},

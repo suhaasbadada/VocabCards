@@ -23,6 +23,7 @@ export class WordListComponent implements OnInit {
   showDefinition=false;
   showDetails=false;
   learntFilter=false;
+  allChecked=true;
 
   ngOnInit(): void {
     const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
@@ -49,6 +50,20 @@ export class WordListComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
         const filteredItems: flashcardDTO[] = flashcards.filter(f => keysWithTrueValue.includes(f.id));
+        this.model=filteredItems;
+        this.loaded=true;
+        this.totalLearnt= keysWithTrueValue.filter(id => flashcards.some(obj => obj.id === id)).length;
+      })
+    })
+  }
+
+  loadNotLearnt(){
+    const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
+    const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
+
+    this.activatedRoute.params.subscribe(params=>{
+      this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
+        const filteredItems: flashcardDTO[] = flashcards.filter(f => !keysWithTrueValue.includes(f.id));
         this.model=filteredItems;
         this.loaded=true;
         this.totalLearnt= keysWithTrueValue.filter(id => flashcards.some(obj => obj.id === id)).length;
@@ -104,10 +119,23 @@ export class WordListComponent implements OnInit {
   
   showLearnt(){
     this.learntFilter = !this.learntFilter;
+    this.allChecked = false;
     if(this.learntFilter==true){
       this.loadLearnt();
     }else{
-      this.loadData();
+      this.loadNotLearnt();
     }
   }
+
+  showAll(){
+    this.allChecked = !this.allChecked;
+    this.learntFilter = !this.learntFilter;
+    if(this.allChecked){
+      this.loadData();
+    }else{
+      this.showLearnt();
+    }
+    
+  }
+
 }

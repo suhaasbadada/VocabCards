@@ -20,6 +20,7 @@ import { RandomwordComponent } from './randomword/randomword.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { SupportComponent } from './support/support.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomepageComponent } from './homepage/homepage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LearntWordsComponent,
     RandomwordComponent,
     QuizComponent,
-    SupportComponent
+    SupportComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
