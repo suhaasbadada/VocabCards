@@ -66,7 +66,7 @@ export class WordListComponent implements OnInit {
         const filteredItems: flashcardDTO[] = flashcards.filter(f => !keysWithTrueValue.includes(f.id));
         this.model=filteredItems;
         this.loaded=true;
-        this.totalLearnt= keysWithTrueValue.filter(id => flashcards.some(obj => obj.id === id)).length;
+        this.totalLearnt= 0;
       })
     })
   }
@@ -129,7 +129,6 @@ export class WordListComponent implements OnInit {
 
   showAll(){
     this.allChecked = !this.allChecked;
-    this.learntFilter = !this.learntFilter;
     if(this.allChecked){
       this.loadData();
     }else{
