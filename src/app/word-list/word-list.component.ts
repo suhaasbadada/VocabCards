@@ -25,6 +25,7 @@ export class WordListComponent implements OnInit {
   learntFilter=false;
   allChecked=true;
 
+
   ngOnInit(): void {
     const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     this.loadData();
@@ -117,8 +118,11 @@ export class WordListComponent implements OnInit {
     this.showDetails=!this.showDetails;
   }
   
-  showLearnt(){
-    this.learntFilter = !this.learntFilter;
+  showLearnt(po:boolean){
+    if(!po){
+      this.learntFilter = !this.learntFilter;
+    }
+    
     this.allChecked = false;
     if(this.learntFilter==true){
       this.loadLearnt();
@@ -132,7 +136,7 @@ export class WordListComponent implements OnInit {
     if(this.allChecked){
       this.loadData();
     }else{
-      this.showLearnt();
+      this.showLearnt(true);
     }
     
   }

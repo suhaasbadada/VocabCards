@@ -4,7 +4,7 @@
 
 <div class="toggle-container">
     <mat-slide-toggle [checked]="showDefinition" (change)="toggleShowDefinition()" class="mat-slide-toggle ">Definition</mat-slide-toggle>
-    <mat-slide-toggle [checked]="learntFilter" (change)="showLearnt()" class="mat-slide-toggle ">Learnt</mat-slide-toggle>
+    <mat-slide-toggle [checked]="learntFilter" (change)="showLearnt(false)" class="mat-slide-toggle ">Learnt</mat-slide-toggle>
     <mat-checkbox [checked]="allChecked" (change)="showAll()"  class="mat-slide-toggle ">All</mat-checkbox>
 </div>
   
