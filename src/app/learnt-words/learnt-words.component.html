@@ -9,7 +9,7 @@
     <div *ngIf="hasLoaded" fxLayout="row wrap">
       <div *ngFor="let w of paginatedResponse">
         <div (click)="showDefinition[w.id] = !showDefinition[w.id]" class="card">
-          <p style="font-size: 20px;">{{w.word}}</p>
+          <p *ngIf="!showDefinition[w.id]" style="font-size: 20px;">{{w.word}}</p>
           <div *ngIf="showDefinition[w.id]" class="definition">
             <p style="color:red"><i>{{w.definition}}</i></p>
           </div>
