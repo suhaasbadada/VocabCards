@@ -153,3 +153,13 @@ p {
   background-color:#FFFEF2;
   border-radius: 8px;
 }
+
+.spacer{
+  flex: 1 1 auto;
+}
+.custom-toolbar {
+  background-color:#004D6A; /* Set the background color you want */
+  position: sticky;
+  top: 0;
+  z-index: 100; 
+}

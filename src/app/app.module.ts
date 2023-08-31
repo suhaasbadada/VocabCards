@@ -21,6 +21,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { SupportComponent } from './support/support.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
+import { SyncComponent } from './utils/sync/sync.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     RandomwordComponent,
     QuizComponent,
     SupportComponent,
-    HomepageComponent
+    HomepageComponent,
+    SyncComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 .card{  
     padding: 1.25rem;
     height: 6.25rem;
@@ -60,7 +63,7 @@ p{
 
 a{
     color:darkgray;
-    background-color: #FFFEF2 ;
+    background-color: #FFFEF2;
 }
 
 .popup .mat-dialog-container {
@@ -97,6 +100,29 @@ a{
     color:yellow;
     transform: scale(1.5);
     padding-top:1.063rem;
+    margin:30px;
+}
+
+.spacer{
+    flex: 1 1 auto;
+}
+.middle-text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    position: absolute; /* Position the text absolutely within the toolbar */
+    left: 50%; /* Move the text to the horizontal center */
+    transform: translateX(-50%); /* Adjust to horizontally center the text */
+    color: yellow;
+  }
+.custom-toolbar {
+    background-color:#004D6A; /* Set the background color you want */
+    position: sticky;
+    top: 0;
+    z-index: 100; 
 }
 
 .mat-progress-spinner circle, .mat-spinner circle {
@@ -129,3 +155,4 @@ a{
     height: 1.875rem;
     font-family: 'Lato', sans-serif;
   }
+

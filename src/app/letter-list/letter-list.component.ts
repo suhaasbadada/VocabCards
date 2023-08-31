@@ -57,6 +57,7 @@ export class LetterListComponent implements OnInit {
 
   ngOnInit(): void {
     const learntWordsIds = JSON.parse(localStorage.getItem(localStorageKey) || '{}');
+    // console.log(learntWordsIds);
     const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
     this.totalLearntLBM=keysWithTrueValue.length;
 
