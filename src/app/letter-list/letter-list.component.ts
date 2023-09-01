@@ -6,8 +6,8 @@ import { NoWordsComponent } from '../utils/no-words/no-words.component';
 import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith, switchMap } from 'rxjs';
-const localStorageKey='learntWords';
-
+import { SyncComponent } from '../utils/sync/sync.component';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-letter-list',
   templateUrl: './letter-list.component.html',
@@ -56,7 +56,7 @@ export class LetterListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const learntWordsIds = JSON.parse(localStorage.getItem(localStorageKey) || '{}');
+    const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     // console.log(learntWordsIds);
     const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
     this.totalLearntLBM=keysWithTrueValue.length;
@@ -79,6 +79,10 @@ export class LetterListComponent implements OnInit {
 
   openDialog(){
     this.dialogRef.open(NoWordsComponent,{closeOnNavigation: true,panelClass:'popup'});
+  }
+
+  openSyncDialog(){
+    this.dialogRef.open(SyncComponent,{closeOnNavigation: true,panelClass:'popup'});
   }
 
   toggleSearch() {

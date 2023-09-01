@@ -29,9 +29,9 @@
         <span class="middle-text">{{totalLearntLBM}}/1067</span> 
         <!-- <button mat-button>{{totalLearntLBM}}/1067</button> -->
         <button mat-button><span class="material-icons">search</span></button>
-        <button mat-button><span class="material-icons">bolt</span></button>
-        <button mat-button><span class="material-icons">shuffle</span></button>
-        <button mat-button (click)="openDialog()"><span class="material-icons">cloud_sync</span></button>
+        <button mat-button routerLink="quickreview"><span class="material-icons">bolt</span></button>
+        <button mat-button routerLink="random"><span class="material-icons">shuffle</span></button>
+        <button mat-button (click)="openSyncDialog()"><span class="material-icons">cloud_sync</span></button>
         <button mat-button><span class="material-icons">person</span></button>
         
       </mat-toolbar>

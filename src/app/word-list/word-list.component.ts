@@ -74,12 +74,14 @@ export class WordListComponent implements OnInit {
 
   onCheckboxChange(wordId: number, isChecked: boolean) {
     const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
+    console.log(typeof learntWords);
     learntWords[wordId] = isChecked;
     if(learntWords[wordId]==false){
       this.totalLearnt--;
     }else{
       this.totalLearnt++;
     }
+    
     localStorage.setItem(environment.localStorageKey, JSON.stringify(learntWords));
 
     this.sendLocalStorageDataToBackend(learntWords);

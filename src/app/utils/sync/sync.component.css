@@ -1,0 +1,44 @@
+p{
+    color:darkgray;
+}
+
+.nowords-card{
+   
+    height:300px;
+    width: 500px;
+    border-radius: 100px;
+    margin: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+
+.sync-card{
+    height:300px;
+    width: 500px;
+    border-radius: 10px;
+    background-color: grey;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    line-height: 14px;
+    min-width: auto;
+}
+
+.copy-button{
+    margin: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+}
+
+.sync-button-container {
+    margin-top: auto; 
+}
