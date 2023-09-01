@@ -160,6 +160,9 @@ a{
     font-family: 'Lato', sans-serif;
     /* font-family: Arial, sans-serif;  */
     font-size: 16px;
+    background-color: #FFFEF2;
+    vertical-align: middle;
+    text-align: center;
   }
 
 /* Style the suggestions container */
@@ -170,10 +173,11 @@ a{
     right: 0;
     margin-right: 275px;
     width: 18.75rem;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 1.1rem;
+    background-color: #FFFEF2;
+    border: 1px solid black;
+    border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
     overflow-y: auto;
     z-index: 1;
   }
@@ -186,11 +190,12 @@ a{
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     color:black;
+    text-align: center;
   }
   
   /* Style the selected suggestion item on hover */
   .suggestions .suggestion:hover {
-    background-color: #f0f0f0;
+    background-color: #FFF;
   }
   
   

@@ -53,18 +53,7 @@ export class LetterListComponent implements OnInit {
   allWordsLearnt: flashcardDTO[] = [];
   showSearch: boolean = false;
 
-  wordList: string[] = [
-    'Elephant',
-    'Eloquent',
-    'Ephemeral',
-    'Elusive',
-    'Banana',
-    'Bumblebee',
-    'Exquisite',
-    'Serendipity',
-    'Bilateral',
-    'Frenetic',
-  ];
+  wordList: string[] = [];
   userInput: string = '';
   suggestions: string[] = [];
   filterSuggestions() {
@@ -75,7 +64,6 @@ export class LetterListComponent implements OnInit {
 
   ngOnInit(): void {
     const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
-    // console.log(learntWordsIds);
     const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
     this.totalLearntLBM=keysWithTrueValue.length;
 
@@ -93,6 +81,10 @@ export class LetterListComponent implements OnInit {
       })
       this.loaded=true;
     }
+
+    this.flashcardService.getAll().subscribe((response:flashcardDTO[])=>{
+      this.wordList=response.map(dict => dict.word).filter(Boolean);
+    })
   }
 
   openDialog(){
