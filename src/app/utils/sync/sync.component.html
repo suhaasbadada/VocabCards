@@ -1,8 +1,10 @@
 <div class="nowords-card">
-    <button class="close" mat-button (click)="closeDialog()">
+    <!-- <button class="close" mat-button (click)="closeDialog()">
         <mat-icon>close</mat-icon>
-    </button>
-    <button mat-flat-button (click)="copyProgress()">
+    </button> -->
+    <br>
+
+    <button mat-flat-button (click)="copyProgress()" class="copy-button">
         Copy Progress
         <span class="material-icons">
             content_copy
@@ -12,7 +14,10 @@
     <br>
     <br>
 
-    <textarea rows="8" cols="50" [(ngModel)]="textareaValue" placeholder="Paste the progress on another device"></textarea>
+    <textarea rows="8" cols="50" [(ngModel)]="textareaValue" placeholder="Paste the progress on another device" class="ta"></textarea>
+    <br>
+    <br>
+    <!-- <br> -->
 
     <div class="sync-button-container">
         <a mat-flat-button color="primary" (click)="syncProgress()">Sync</a>

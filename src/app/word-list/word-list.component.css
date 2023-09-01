@@ -88,9 +88,6 @@ p {
     color:#FFFEF2;
   }
 
-  .material-icons {
-    font-size: 45px;
-  }
 
 .word-center {
   display: flex;
@@ -122,7 +119,7 @@ p {
   justify-content: center;
   margin: 1.25rem; /* 20px converted to rem */
   border-radius: 0.3125rem; /* 5px converted to rem */
-  color: #FFFEF2;
+  color: black;
 }
 
 
@@ -157,9 +154,24 @@ p {
 .spacer{
   flex: 1 1 auto;
 }
+
+.middle-text {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+  position: absolute; /* Position the text absolutely within the toolbar */
+  left: 50%; /* Move the text to the horizontal center */
+  transform: translateX(-50%); /* Adjust to horizontally center the text */
+  color: yellow;
+}
+
 .custom-toolbar {
   background-color:#004D6A; /* Set the background color you want */
   position: sticky;
   top: 0;
   z-index: 100; 
 }
+

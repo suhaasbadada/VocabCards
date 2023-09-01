@@ -1,4 +1,4 @@
-<mat-sidenav-container fullscreen style="background-color: #152238">
+<mat-sidenav-container fullscreen style="background-color: #c3c8bb;">
     <!-- <mat-sidenav #sidenav opened="true" mode="side" style="background-color:grey">
         <mat-nav-list >
             <mat-list-item></mat-list-item>
@@ -18,12 +18,12 @@
 
       <mat-sidenav-content>
         <router-outlet></router-outlet>
-      <mat-toolbar color="primary" class="custom-toolbar sticky">
+      <mat-toolbar color="primary" class="custom-toolbar sticky mat-elevation-z5">
         
         <!-- <button mat-icon-button>
             <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
         </button>  -->
-        <span class="material-icons">info</span>
+        <button mat-button><span class="material-icons">info</span></button>
         <span style="margin-left: 10px;">VocabCards</span>
         <div class="spacer"></div>
         <span class="middle-text">{{totalLearntLBM}}/1067</span> 
@@ -43,14 +43,14 @@
       <div class="content" *ngIf="loaded"> 
         <ng-container *ngFor="let letter of letters">
           <mat-spinner *ngIf="!hasLoaded.get(letter)"></mat-spinner>
-          <div class="card" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">
+          <div class="card mat-elevation-z5" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">
             <a routerLink="/flashcards/letter/{{letter}}" mat-flat-button>
               <p>
                 <app-letter [letter]="letter" [percentage]="map.get(letter)"></app-letter>
               </p>
             </a>
           </div>
-          <div class="card" *ngIf="letter=='X' || letter=='Y'">
+          <div class="card mat-elevation-z5" *ngIf="letter=='X' || letter=='Y'">
             <a (click)="openDialog()" mat-flat-button>
               <p>
                 <app-letter [letter]="letter" [percentage]="map.get(letter)"></app-letter>
