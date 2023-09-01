@@ -28,7 +28,23 @@
         <div class="spacer"></div>
         <span class="middle-text">{{totalLearntLBM}}/1067</span> 
         <!-- <button mat-button>{{totalLearntLBM}}/1067</button> -->
-        <button mat-button><span class="material-icons">search</span></button>
+        <button mat-button (click)="toggleSearch()"><span class="material-icons">search</span></button>
+        <div class="search-box" *ngIf="showSearch">
+          <input
+            type="text"
+            [(ngModel)]="userInput"
+            placeholder="Search..."
+            (blur)="toggleSearch()"
+            (input)="filterSuggestions()"
+          />
+        </div>
+        
+        <div *ngIf="suggestions.length > 0" class="suggestions">
+          <div *ngFor="let suggestion of suggestions" class="suggestion">
+            {{ suggestion }}
+          </div>
+        </div>
+
         <button mat-button routerLink="quickreview"><span class="material-icons">bolt</span></button>
         <button mat-button routerLink="random"><span class="material-icons">shuffle</span></button>
         <button mat-button (click)="openSyncDialog()"><span class="material-icons">cloud_sync</span></button>

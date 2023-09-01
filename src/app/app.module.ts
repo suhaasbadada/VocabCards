@@ -22,6 +22,7 @@ import { SupportComponent } from './support/support.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SyncComponent } from './utils/sync/sync.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { SyncComponent } from './utils/sync/sync.component';
     MaterialModule,
     HttpClientModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

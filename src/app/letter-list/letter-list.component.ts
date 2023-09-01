@@ -52,8 +52,26 @@ export class LetterListComponent implements OnInit {
   modelLBM!:flashcardDTO[];
   allWordsLearnt: flashcardDTO[] = [];
   showSearch: boolean = false;
-  
 
+  wordList: string[] = [
+    'Elephant',
+    'Eloquent',
+    'Ephemeral',
+    'Elusive',
+    'Banana',
+    'Bumblebee',
+    'Exquisite',
+    'Serendipity',
+    'Bilateral',
+    'Frenetic',
+  ];
+  userInput: string = '';
+  suggestions: string[] = [];
+  filterSuggestions() {
+    this.suggestions = this.wordList.filter((word) =>
+      word.toLowerCase().includes(this.userInput.toLowerCase())
+    );
+  }
 
   ngOnInit(): void {
     const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
@@ -87,6 +105,10 @@ export class LetterListComponent implements OnInit {
 
   toggleSearch() {
     this.showSearch = !this.showSearch;
+    if (!this.showSearch) {
+      this.userInput = ''; // Clear the user input when closing the search box
+      this.suggestions = []; // Clear suggestions when closing the search box
+    }
   }
 
 }
