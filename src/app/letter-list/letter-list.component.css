@@ -26,7 +26,7 @@ p{
     gap: 1.875rem;
     align-items: center;
     font-family: "Lato", sans-serif;
-    width: 100%;    
+    /* width: 100%;     */
 
     /* Updated styles for smaller screens */
     grid-template-columns: repeat(1, 1fr);

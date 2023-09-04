@@ -15,7 +15,7 @@ export class LearntWordsComponent implements OnInit {
   response!:Array<flashcardDTO>;
   responseLBM:Array<flashcardDTO>=[];
   paginatedResponse: any[] = [];
-  itemsPerPage = 54;  
+  itemsPerPage = 48;  
   currentPage=1;
   colorMap: { [id: number]: string } = {};
   showDefinition: { [id: number]: boolean } = {};

@@ -8,9 +8,6 @@ p{
     background-color:#152238;
     color:#FFFEF2;
 }
-.material-icons {
-    font-size: 45px;
-}
 
 .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
     stroke: darkgrey;
@@ -106,7 +103,7 @@ p{
     justify-content: center; /* Add this line to center the paginator horizontally */
     align-items: center; /* Add this line to center the paginator vertically */
     margin-top: 1.25rem;
-    background-color: #152238;
+    background-color: #c3c8bb;
   }
   
   ::ng-deep .mat-paginator-outer-container {
@@ -126,4 +123,15 @@ p{
 ::ng-deep .mat-paginator-range-actions{
     /* background-color: #152238; */
     border-radius: 1.875rem;
+}
+
+.custom-toolbar {
+    background-color:#004D6A; /* Set the background color you want */
+    position: sticky;
+    top: 0;
+    z-index: 100; 
+  }
+
+.spacer{
+    flex: 1 1 auto;
 }
