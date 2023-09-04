@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashcardService } from '../flashcard.service';
 import { flashcardDTO } from '../models/flashcard.model';
@@ -18,6 +18,9 @@ export class WordListComponent implements OnInit {
   loaded=false;
   totalLearnt!:number;
   totalLearntLBM!:number;
+  @ViewChild('allLearntDiv', { static: false })
+  allLearntDiv!: ElementRef;
+
   constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog,private http:HttpClient) { }
   private apiURL=environment.apiURL;
   showDefinition=false;
@@ -27,7 +30,6 @@ export class WordListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const learntWords = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     this.loadData();
   }
 
@@ -45,6 +47,7 @@ export class WordListComponent implements OnInit {
   }
 
   loadLearnt(){
+    this.loaded=false;
     const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
 
@@ -117,7 +120,7 @@ export class WordListComponent implements OnInit {
 
   toggleShowDefinition(){
     this.showDefinition = !this.showDefinition;
-    this.showDetails=!this.showDetails;
+    this.showDetails = !this.showDetails;
   }
   
   showLearnt(po:boolean){

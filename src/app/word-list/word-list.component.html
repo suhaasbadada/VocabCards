@@ -30,8 +30,12 @@
             <mat-spinner *ngIf="!loaded"></mat-spinner>
         </div>
 
+        <div *ngIf="!model.length && loaded" class="all-learnt">
+            <h1><i>All Learnt!</i></h1>
+        </div>
+
         <!-- no words component if result empty -->
-        <div *ngIf="!model.length && loaded">
+        <div *ngIf="!model.length && loaded && learntFilter">
             <app-no-words></app-no-words>
         </div>
 
