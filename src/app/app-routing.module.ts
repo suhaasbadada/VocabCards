@@ -13,8 +13,8 @@ import { AllWordsComponent } from './all-words/all-words.component';
 
 const routes: Routes = [
   // {path:'',component:HomepageComponent},
-  {path:'',component:LetterListComponent},
-  {path:'all',component:AllWordsComponent},
+  {path:'',component:AllWordsComponent},
+  {path:'tool',component:LetterListComponent},
   {path:'flashcards/letter/:c',component:WordListComponent},
   {path:'huechart',component:HueChartComponent},
   {path:'login',component:LoginPageComponent},
