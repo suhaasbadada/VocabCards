@@ -40,7 +40,7 @@
         
         <div *ngIf="suggestions.length > 0" class="suggestions">
           <div *ngFor="let suggestion of suggestions" class="suggestion">
-            <a routerLink="flashcards/letter/{{suggestion.charAt(0)}}" style=" text-decoration: none; color: black;">{{ suggestion }}</a>
+            <a routerLink="/flashcards/letter/{{suggestion.charAt(0)}}" style=" text-decoration: none; color: black;">{{ suggestion }}</a>
           </div>
         </div>
 
