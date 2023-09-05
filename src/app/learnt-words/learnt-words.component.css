@@ -10,8 +10,8 @@ p{
 }
 
 .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
-    stroke: darkgrey;
-}
+    stroke: #004D6A;
+  }
 
 .spinner{
     width: 6.25rem;

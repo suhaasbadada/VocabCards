@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SyncComponent } from './utils/sync/sync.component';
 import { FormsModule } from '@angular/forms';
+import { AllWordsComponent } from './all-words/all-words.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { FormsModule } from '@angular/forms';
     QuizComponent,
     SupportComponent,
     HomepageComponent,
-    SyncComponent
+    SyncComponent,
+    AllWordsComponent
   ],
   imports: [
     BrowserModule,

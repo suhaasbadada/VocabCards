@@ -50,14 +50,14 @@
         <button mat-button><span class="material-icons">person</span></button>
         
       </mat-toolbar>
-  
-      <div fxLayout="row wrap" fxLayoutGap="35px">
-        <!-- Other content here... -->
+
+      <div class="overlay" *ngIf="!loaded">
+        <mat-spinner></mat-spinner>
       </div>
-  
+    
       <div class="content" *ngIf="loaded"> 
         <ng-container *ngFor="let letter of letters">
-          <mat-spinner *ngIf="!hasLoaded.get(letter)"></mat-spinner>
+        
           <div class="card mat-elevation-z5" *ngIf="hasLoaded.get(letter) && (letter!=='X' && letter!=='Y')">
             <a routerLink="/flashcards/letter/{{letter}}" mat-flat-button>
               <p>
@@ -74,6 +74,6 @@
           </div>
         </ng-container>
       </div>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
-  

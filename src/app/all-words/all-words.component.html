@@ -1,13 +1,12 @@
-
 <mat-sidenav-container fullscreen style="background-color: #c3c8bb">
     <mat-toolbar color="primary" class="custom-toolbar sticky mat-elevation-z5">
         <button mat-button><span class="material-icons" routerLink="" style="font-size: 45px;">abc</span></button>
         <span style="margin-left: 10px;">VocabCards</span>
         <div class="spacer"></div>
-        <span class="middle-text"  *ngIf="model.length && loaded">{{totalLearnt}}/{{model.length}}</span> 
+        <span class="middle-text" >1067</span> 
         <button mat-button><span class="material-icons">search</span></button>
-        <button mat-button routerLink="/quickreview"><span class="material-icons">bolt</span></button>
-        <button mat-button routerLink="/random"><span class="material-icons">shuffle</span></button>
+        <!-- <button mat-button routerLink="/quickreview"><span class="material-icons">bolt</span></button> -->
+        <!-- <button mat-button routerLink="/random"><span class="material-icons">shuffle</span></button> -->
         <button mat-button><span class="material-icons">person</span></button>
     
         <!-- <button mat-button>{{totalLearntLBM}}/1067</button> -->
@@ -16,50 +15,40 @@
         <a class="home" mat-flat-button routerLink="random"><span class="material-icons">shuffle</span></a>
         <a class="home" mat-flat-button><span class="material-icons" style="color: whitesmoke;">cloud_sync</span></a> -->
     </mat-toolbar>
-<div class="toggle-container">
-    <mat-slide-toggle [checked]="showDefinition" (change)="toggleShowDefinition()" class="mat-slide-toggle ">Definition</mat-slide-toggle>
-    <mat-slide-toggle [checked]="learntFilter" (change)="showLearnt(false)" class="mat-slide-toggle ">Learnt</mat-slide-toggle>
-    <mat-checkbox [checked]="allChecked" (change)="showAll()"  class="mat-slide-toggle ">All</mat-checkbox>
-</div>
-  
+    <!-- <div *ngFor="let card of model" class="wm-div">
+        <a class="word-meaning mat-elevation-z5">{{card.word}} - {{card.definition}}</a>
+    </div> -->
+    <!-- <div class="wm-class">
+        <br>
+        <br>
+        <a class="word-meaning mat-elevation-z5">aberration - a deviation from what is normal or expected.</a>
+    </div> -->
+
+
 <div class="kontent">
+
+    <div class="spinner">
+        <mat-spinner *ngIf="!loaded"></mat-spinner>
+    </div>
+
     <div fxLayout="row wrap" fxLayoutGap="35px">
-
-        <!-- spinner if waiting data to load -->
-        <div class="spinner" *ngIf="!loaded">
-            <mat-spinner></mat-spinner>
-        </div>
-
-        <div *ngIf="!model.length && loaded" class="all-learnt">
-            <h1><i>All Learnt!</i></h1>
-        </div>
-
-        <!-- no words component if result empty -->
-        <div *ngIf="!model.length && loaded && learntFilter">
-            <app-no-words></app-no-words>
-        </div>
-
         <!-- flashcard -->
         <div  *ngFor="let element of model" fxLayout="row wrap">
             <mat-card *ngIf="element" class="example-card mat-elevation-z5">
-                <ng-container *ngIf="showDetails">
+                <ng-container *ngIf="true">
                     <mat-card-header class="header">
                         <mat-card-title><a href="https://www.dictionary.com/browse/{{element.word}}" target="_blank">{{element.word}}</a> <i> ({{element.pos}})</i></mat-card-title>
                         <mat-card-subtitle class="sub">
-                            <ng-container *ngIf="showDefinition">
+                            <ng-container *ngIf="true">
                                 {{element.definition}}
                             </ng-container>
                         </mat-card-subtitle>
-                        <div class="check-box"><mat-checkbox [checked]="getCheckboxStatus(element.id)"  (change)="onCheckboxChange(element.id, $event.checked)"></mat-checkbox></div>
+                        <!-- <div class="check-box"><mat-checkbox [checked]="getCheckboxStatus(element.id)"  (change)="onCheckboxChange(element.id, $event.checked)"></mat-checkbox></div> -->
                     </mat-card-header>
                     <hr>
                     <mat-card-content class="content">
                         Example : {{element.example}}
                     </mat-card-content>
-            </ng-container>
-            <ng-container *ngIf="!showDetails">
-                    <p class="word-center"><b><i>{{element.word}}</i></b></p>
-                    <div class="check-box"><mat-checkbox [checked]="getCheckboxStatus(element.id)"  (change)="onCheckboxChange(element.id, $event.checked)"></mat-checkbox></div>
             </ng-container>
             </mat-card> 
         </div>

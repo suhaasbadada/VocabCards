@@ -2,7 +2,7 @@
     padding:1rem;
 }
 .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
-    stroke: darkgrey;
+  stroke: #004D6A;
 }
 
 .spinner{
@@ -13,7 +13,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    
     margin: auto;
 }
 

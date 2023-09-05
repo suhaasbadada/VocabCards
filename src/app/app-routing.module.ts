@@ -9,10 +9,12 @@ import { RandomwordComponent } from './randomword/randomword.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { SupportComponent } from './support/support.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AllWordsComponent } from './all-words/all-words.component';
 
 const routes: Routes = [
   // {path:'',component:HomepageComponent},
   {path:'',component:LetterListComponent},
+  {path:'all',component:AllWordsComponent},
   {path:'flashcards/letter/:c',component:WordListComponent},
   {path:'huechart',component:HueChartComponent},
   {path:'login',component:LoginPageComponent},

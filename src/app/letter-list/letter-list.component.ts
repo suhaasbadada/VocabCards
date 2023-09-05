@@ -79,11 +79,11 @@ export class LetterListComponent implements OnInit {
         this.map.set(l,this.percentage);
         this.hasLoaded.set(l,true);
       })
-      this.loaded=true;
     }
 
     this.flashcardService.getAll().subscribe((response:flashcardDTO[])=>{
       this.wordList=response.map(dict => dict.word).filter(Boolean);
+      this.loaded=true;
     })
   }
 
