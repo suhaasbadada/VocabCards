@@ -88,4 +88,30 @@
     transform: translateX(-50%); /* Adjust to horizontally center the text */
     color: yellow;
   }
+
+  .paginator {
+    display: flex;
+    justify-content: center; /* Add this line to center the paginator horizontally */
+    align-items: center; /* Add this line to center the paginator vertically */
+    margin-top: 1.25rem;
+    background-color: #c3c8bb;
+  }
   
+  ::ng-deep .mat-paginator-outer-container {
+    justify-content: center !important; /* Center the paginator content horizontally */
+    background-color:  #FFFEF2;
+    color:#152238;
+    border-radius: 0.938rem;
+    display: flex;
+    justify-content: center; /* Center the paginator content horizontally */
+    align-items: center; /* Center the paginator content vertically */
+    /* width:31.25rem; */
+  }
+  
+  /* Other styles */
+  
+
+::ng-deep .mat-paginator-range-actions{
+    /* background-color: #152238; */
+    border-radius: 1.875rem;
+}

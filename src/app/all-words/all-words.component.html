@@ -27,13 +27,14 @@
 
 <div class="kontent">
 
-    <div class="spinner">
-        <mat-spinner *ngIf="!loaded"></mat-spinner>
-    </div>
 
     <div fxLayout="row wrap" fxLayoutGap="35px">
+
+        <div class="spinner">
+            <mat-spinner *ngIf="!loaded"></mat-spinner>
+        </div>
         <!-- flashcard -->
-        <div  *ngFor="let element of model" fxLayout="row wrap">
+        <div  *ngFor="let element of paginatedResponse" fxLayout="row wrap">
             <mat-card *ngIf="element" class="example-card mat-elevation-z5">
                 <ng-container *ngIf="true">
                     <mat-card-header class="header">
@@ -53,5 +54,15 @@
             </mat-card> 
         </div>
     </div>
+    <div class="paginator" *ngIf="loaded && model">
+            <mat-paginator class="paginator"
+                [length]="model.length"
+                [pageSize]="itemsPerPage"
+                [pageSizeOptions]="[6,15,40, 45, 48, 54, 63, 72, 90]"
+                [pageIndex]="currentPage - 1" 
+                (page)="onPageChange($event)"
+                showFirstLastButtons
+            ></mat-paginator>
+      </div>
 </div>
 </mat-sidenav-container>
