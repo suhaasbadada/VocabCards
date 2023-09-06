@@ -136,8 +136,10 @@ export class WordListComponent implements OnInit {
     
     this.allChecked = false;
     if(this.learntFilter==true){
+      this.loaded=false;
       this.loadLearnt();
     }else{
+      this.loaded=false;
       this.loadNotLearnt();
     }
   }
