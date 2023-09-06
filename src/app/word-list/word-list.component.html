@@ -34,16 +34,17 @@
     <div fxLayout="row wrap" fxLayoutGap="35px">
 
         <!-- spinner if waiting data to load -->
-        <div class="spinner" *ngIf="!loaded">
+        <div class="spinner" *ngIf="!loaded && !learntFilter">
             <mat-spinner></mat-spinner>
         </div>
 
-        <div *ngIf="!model.length && loaded" class="all-learnt">
+        <div *ngIf="!filteredModel.length && loaded" class="all-learnt">
             <h1><i>All Learnt!</i></h1>
         </div>
 
+
         <!-- no words component if result empty -->
-        <div *ngIf="!model.length && loaded && learntFilter">
+        <div *ngIf="!filteredModel.length && loaded && learntFilter">
             <app-no-words></app-no-words>
         </div>
 
