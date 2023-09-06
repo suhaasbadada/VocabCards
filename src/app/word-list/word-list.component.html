@@ -5,7 +5,15 @@
         <span style="margin-left: 10px;">VocabCards</span>
         <div class="spacer"></div>
         <span class="middle-text"  *ngIf="model.length && loaded">{{totalLearnt}}/{{model.length}}</span> 
-        <button mat-button><span class="material-icons">search</span></button>
+        <button mat-button (click)="toggleSearch()"><span class="material-icons">search</span></button>
+        <div class="search-box" *ngIf="showSearch">
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            placeholder="Search..."
+            (input)="filterCards()"
+          />
+        </div>
         <button mat-button routerLink="/quickreview"><span class="material-icons">bolt</span></button>
         <button mat-button routerLink="/random"><span class="material-icons">shuffle</span></button>
         <button mat-button><span class="material-icons">person</span></button>
@@ -40,7 +48,7 @@
         </div>
 
         <!-- flashcard -->
-        <div  *ngFor="let element of model" fxLayout="row wrap">
+        <div  *ngFor="let element of filteredModel" fxLayout="row wrap">
             <mat-card *ngIf="element" class="example-card mat-elevation-z5">
                 <ng-container *ngIf="showDetails">
                     <mat-card-header class="header">

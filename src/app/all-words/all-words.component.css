@@ -115,3 +115,25 @@
     /* background-color: #152238; */
     border-radius: 1.875rem;
 }
+
+.search-box {
+  margin-top: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.search-box input {
+  padding: 0.313rem;
+  border: 0.063rem solid #ccc;
+  border-radius: 1.1rem;
+  width: 18.75rem;
+  height: 1.875rem;
+  font-family: 'Lato', sans-serif;
+  /* font-family: Arial, sans-serif;  */
+  font-size: 16px;
+  background-color: #FFFEF2;
+  vertical-align: middle;
+  text-align: center;
+}

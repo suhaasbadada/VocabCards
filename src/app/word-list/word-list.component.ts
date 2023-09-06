@@ -20,6 +20,8 @@ export class WordListComponent implements OnInit {
   totalLearntLBM!:number;
   @ViewChild('allLearntDiv', { static: false })
   allLearntDiv!: ElementRef;
+  searchTerm='';
+  filteredModel:flashcardDTO[]=[];
 
   constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog,private http:HttpClient) { }
   private apiURL=environment.apiURL;
@@ -27,6 +29,7 @@ export class WordListComponent implements OnInit {
   showDetails=false;
   learntFilter=false;
   allChecked=true;
+  showSearch=false;
 
 
   ngOnInit(): void {
@@ -40,8 +43,9 @@ export class WordListComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
         this.model=flashcards;
-        this.loaded=true;
         this.totalLearnt= keysWithTrueValue.filter(id => flashcards.some(obj => obj.id === id)).length;
+        this.filteredModel = this.model;
+        this.loaded=true;
       })
     })
   }
@@ -145,5 +149,27 @@ export class WordListComponent implements OnInit {
     }
     
   }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+    if (!this.showSearch) {
+      this.searchTerm = ''; // Clear the user input when closing the search box
+    }
+  }
+
+  filterCards() {
+    // Trim the search term to remove leading and trailing whitespace
+    const trimmedSearchTerm = this.searchTerm.trim().toLowerCase();
+    if (trimmedSearchTerm === '') {
+      // If the search term is empty, show all items from the original model
+      this.filteredModel = this.model;
+    } else {
+      // Filter the model based on the trimmed search term
+      this.filteredModel = this.model.filter((element) =>
+        element.word.toLowerCase().includes(trimmedSearchTerm)
+      );
+    }
+  }
+  
 
 }

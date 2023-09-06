@@ -11,11 +11,14 @@ import { forkJoin, of } from 'rxjs';
   styleUrls: ['./all-words.component.css'],
 })
 export class AllWordsComponent implements OnInit {
-  model!: flashcardDTO[];
+  model: flashcardDTO[]=[];
   loaded = false;
   paginatedResponse: any[] = [];
   itemsPerPage = 15;
   currentPage = 1;
+  showSearch=false;
+  searchTerm='';
+  filteredModel:flashcardDTO[]=[];
 
   constructor(
     private flashcardService: FlashcardService,
@@ -38,6 +41,7 @@ export class AllWordsComponent implements OnInit {
         )
         .subscribe(([response]) => {
           this.model = response;
+          this.filteredModel=this.model;
           this.loaded = true;
           this.currentPage = page; // Set the current page based on URL parameter
           this.paginateItems();
@@ -62,6 +66,29 @@ export class AllWordsComponent implements OnInit {
   private paginateItems(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedResponse = this.model.slice(startIndex, endIndex);
+    this.paginatedResponse = this.filteredModel.slice(startIndex, endIndex);
+  }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+    if (!this.showSearch) {
+      this.searchTerm = ''; // Clear the user input when closing the search box
+    }
+  }
+
+  filterCards() {
+    // Trim the search term to remove leading and trailing whitespace
+    const trimmedSearchTerm = this.searchTerm.trim().toLowerCase();
+    if (trimmedSearchTerm === '') {
+      // If the search term is empty, show all items from the original model
+      this.filteredModel = this.model;
+      this.paginateItems();
+    } else {
+      // Filter the model based on the trimmed search term
+      this.filteredModel = this.model.filter((element) =>
+        element.word.toLowerCase().includes(trimmedSearchTerm)
+      );
+      this.paginateItems();
+    }
   }
 }

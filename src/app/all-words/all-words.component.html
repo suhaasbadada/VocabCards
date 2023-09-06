@@ -4,7 +4,15 @@
         <span style="margin-left: 10px;">VocabCards</span>
         <div class="spacer"></div>
         <span class="middle-text" >1066</span> 
-        <button mat-button><span class="material-icons">search</span></button>
+        <button mat-button (click)="toggleSearch()"><span class="material-icons">search</span></button>
+        <div class="search-box" *ngIf="showSearch">
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            placeholder="Search..."
+            (input)="filterCards()"
+          />
+        </div>
         <!-- <button mat-button routerLink="/quickreview"><span class="material-icons">bolt</span></button> -->
         <!-- <button mat-button routerLink="/random"><span class="material-icons">shuffle</span></button> -->
         <button mat-button><span class="material-icons">person</span></button>
@@ -56,7 +64,7 @@
     </div>
     <div class="paginator" *ngIf="loaded && model">
             <mat-paginator class="paginator"
-                [length]="model.length"
+                [length]="filteredModel.length"
                 [pageSize]="itemsPerPage"
                 [pageSizeOptions]="[6,15,40, 45, 48, 54, 63, 72, 90]"
                 [pageIndex]="currentPage - 1" 
