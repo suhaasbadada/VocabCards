@@ -38,15 +38,19 @@
             <mat-spinner></mat-spinner>
         </div>
 
-        <div *ngIf="!filteredModel.length && loaded" class="all-learnt">
+        <div *ngIf="!filteredModel.length && loaded && !learntFilter" class="all-learnt">
             <h1><i>All Learnt!</i></h1>
+        </div>
+
+        <div *ngIf="!filteredModel.length && loaded && learntFilter" class="all-learnt">
+            <h1><i>Start Learning!</i></h1>
         </div>
 
 
         <!-- no words component if result empty -->
-        <div *ngIf="!filteredModel.length && loaded && learntFilter">
+        <!-- <div *ngIf="!filteredModel.length && loaded && learntFilter">
             <app-no-words></app-no-words>
-        </div>
+        </div> -->
 
         <!-- flashcard -->
         <div  *ngFor="let element of filteredModel" fxLayout="row wrap">
