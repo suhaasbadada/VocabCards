@@ -51,7 +51,6 @@ export class WordListComponent implements OnInit {
   }
 
   loadLearnt(){
-    this.loaded=false;
     const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
     const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
 
@@ -130,16 +129,17 @@ export class WordListComponent implements OnInit {
   }
   
   showLearnt(po:boolean){
+    this.loaded=false;
     if(!po){
       this.learntFilter = !this.learntFilter;
     }
     
     this.allChecked = false;
     if(this.learntFilter==true){
-      this.loaded=false;
+      this.loaded=true;
       this.loadLearnt();
     }else{
-      this.loaded=false;
+      this.loaded=true;
       this.loadNotLearnt();
     }
   }
