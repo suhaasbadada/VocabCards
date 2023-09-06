@@ -59,6 +59,7 @@ export class WordListComponent implements OnInit {
       this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
         const filteredItems: flashcardDTO[] = flashcards.filter(f => keysWithTrueValue.includes(f.id));
         this.model=filteredItems;
+        this.filteredModel=this.model;
         this.loaded=true;
         this.totalLearnt= keysWithTrueValue.filter(id => flashcards.some(obj => obj.id === id)).length;
       })
@@ -73,6 +74,7 @@ export class WordListComponent implements OnInit {
       this.flashcardService.getByLetter(params['c'].toLowerCase()).subscribe(flashcards=>{
         const filteredItems: flashcardDTO[] = flashcards.filter(f => !keysWithTrueValue.includes(f.id));
         this.model=filteredItems;
+        this.filteredModel=this.model;
         this.loaded=true;
         this.totalLearnt= 0;
       })
