@@ -11,6 +11,7 @@
             [(ngModel)]="searchTerm"
             placeholder="Search..."
             (input)="filterCards()"
+            (blur)="toggleSearch()"
           />
         </div>
         <!-- <button mat-button routerLink="/quickreview"><span class="material-icons">bolt</span></button> -->

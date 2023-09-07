@@ -159,6 +159,7 @@ export class WordListComponent implements OnInit {
     if (!this.showSearch) {
       this.searchTerm = ''; // Clear the user input when closing the search box
     }
+    this.loadData();
   }
 
   filterCards() {
