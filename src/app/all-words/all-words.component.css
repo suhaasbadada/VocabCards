@@ -137,3 +137,16 @@
   vertical-align: middle;
   text-align: center;
 }
+
+.empty-search-text{
+  width: 12.25rem;
+  height: 6.25rem;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: scale(1.2);
+  color: #004D6A;
+}
