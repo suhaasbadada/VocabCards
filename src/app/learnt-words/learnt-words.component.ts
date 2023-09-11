@@ -1,47 +1,53 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashcardService } from '../flashcard.service';
 import { MatDialog } from '@angular/material/dialog';
 import { flashcardDTO } from '../models/flashcard.model';
 import { environment } from 'src/environments/environment';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
+
 @Component({
   selector: 'app-learnt-words',
   templateUrl: './learnt-words.component.html',
   styleUrls: ['./learnt-words.component.css']
 })
 export class LearntWordsComponent implements OnInit {
-  hasLoaded=false;
-  response!:Array<flashcardDTO>;
-  responseLBM:Array<flashcardDTO>=[];
-  paginatedResponse: any[] = [];
-  itemsPerPage = 48;  
-  currentPage=1;
+  hasLoaded = false;
+  responseLBM: flashcardDTO[] = [];
+  paginatedResponse: flashcardDTO[] = [];
+  itemsPerPage = 48;
+  currentPage = 1;
   colorMap: { [id: number]: string } = {};
   showDefinition: { [id: number]: boolean } = {};
-  currPageNum=1;
-  constructor(private route:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog) { }
+
+  constructor(
+    private route: ActivatedRoute,
+    private flashcardService: FlashcardService,
+    private router: Router,
+    private dialogRef: MatDialog
+  ) {}
 
   ngOnInit(): void {
     const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
-    const keysWithTrueValue: number[] = Object.keys(learntWordsIds).filter(key => learntWordsIds[key] === true).map(Number);
+    const keysWithTrueValue: number[] = Object.keys(learntWordsIds)
+      .filter(key => learntWordsIds[key] === true)
+      .map(Number);
 
-    const observableArray = keysWithTrueValue.map(id => this.flashcardService.getById(id));
+    const observables: Observable<flashcardDTO>[] = keysWithTrueValue.map(id =>
+      this.flashcardService.getById(id)
+    );
+
+    forkJoin(observables).subscribe((responses: flashcardDTO[]) => {
+      this.responseLBM = responses;
+      this.hasLoaded = true;
+      this.initializeColorMapAndDefinition();
+      this.paginateItems();
+    });
 
     this.route.queryParams.subscribe((params) => {
-        forkJoin(observableArray).subscribe((responses: flashcardDTO[]) => {
-          const page = +params['page'] || 1;
-          this.responseLBM = responses;
-          this.paginateItems();
-
-          this.responseLBM.forEach(obj => {
-            this.colorMap[obj.id] = 'green';
-            this.showDefinition[obj.id] = false;
-          });
-          
-          this.hasLoaded = true;
-        });
-     })
+      this.currentPage = +params['page'] || 1;
+      this.paginateItems();
+    });
   }
 
   onPageChange(event: any): void {
@@ -61,18 +67,22 @@ export class LearntWordsComponent implements OnInit {
     this.paginatedResponse = this.responseLBM.slice(startIndex, endIndex);
   }
 
-  toggleDefinition(wordObj: any): void {
-    wordObj.showDefinition = !wordObj.showDefinition;
+  private initializeColorMapAndDefinition(): void {
+    for (const obj of this.responseLBM) {
+      this.colorMap[obj.id] = 'green';
+      this.showDefinition[obj.id] = false;
+    }
+  }
+
+  toggleDefinition(id: number): void {
+    this.showDefinition[id] = !this.showDefinition[id];
   }
 
   getColor(id: number): string {
     return this.colorMap[id] || 'green';
   }
-  toggleColor(id:number):void{
-    if(this.colorMap[id]==='red'){
-      this.colorMap[id]='green';
-    }else{
-      this.colorMap[id]='red';
-    }
+
+  toggleColor(id: number): void {
+    this.colorMap[id] = this.colorMap[id] === 'red' ? 'green' : 'red';
   }
 }
