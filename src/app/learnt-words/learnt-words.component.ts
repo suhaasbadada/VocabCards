@@ -19,7 +19,8 @@ export class LearntWordsComponent implements OnInit {
   currentPage=1;
   colorMap: { [id: number]: string } = {};
   showDefinition: { [id: number]: boolean } = {};
-  constructor(private activatedRoute:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog) { }
+  currPageNum=1;
+  constructor(private route:ActivatedRoute,private flashcardService:FlashcardService,private router:Router,private dialogRef:MatDialog) { }
 
   ngOnInit(): void {
     const learntWordsIds = JSON.parse(localStorage.getItem(environment.localStorageKey) || '{}');
@@ -27,26 +28,30 @@ export class LearntWordsComponent implements OnInit {
 
     const observableArray = keysWithTrueValue.map(id => this.flashcardService.getById(id));
 
-    forkJoin(observableArray).subscribe((responses: flashcardDTO[]) => {
-      this.responseLBM = responses;
-      this.paginateItems();
+    this.route.queryParams.subscribe((params) => {
+        forkJoin(observableArray).subscribe((responses: flashcardDTO[]) => {
+          const page = +params['page'] || 1;
+          this.responseLBM = responses;
+          this.paginateItems();
 
-      this.responseLBM.forEach(obj => {
-        this.colorMap[obj.id] = 'green';
-        this.showDefinition[obj.id] = false;
-      });
-      
-      this.hasLoaded = true;
-    });
-  }
-
-  ngAfterViewInit(): void{
-   
+          this.responseLBM.forEach(obj => {
+            this.colorMap[obj.id] = 'green';
+            this.showDefinition[obj.id] = false;
+          });
+          
+          this.hasLoaded = true;
+        });
+     })
   }
 
   onPageChange(event: any): void {
     this.currentPage = event.pageIndex + 1;
     this.itemsPerPage = event.pageSize;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: this.currentPage },
+      queryParamsHandling: 'merge',
+    });
     this.paginateItems();
   }
 
