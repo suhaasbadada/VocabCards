@@ -51,7 +51,7 @@ export class AllWordsComponent implements OnInit {
 
   onPageChange(event: any): void {
     this.currentPage = event.pageIndex + 1;
-
+    this.itemsPerPage = event.pageSize;
     // Update the 'page' query parameter in the URL
     this.router.navigate([], {
       relativeTo: this.route,
